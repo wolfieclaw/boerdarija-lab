@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BOERDARIJA | Slang & Street-Level Darija</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <style>
+    .feature-page { max-width: 1100px; margin: 0 auto; padding: 110px 20px 60px; }
+    .feature-header { text-align:center; margin-bottom:40px; position:relative; }
+    .feature-header::before { content:''; position:absolute; inset:30px 0 auto 0; height:210px; background: radial-gradient(circle at center, rgba(255,140,0,0.14), transparent 65%); filter: blur(10px); pointer-events:none; z-index:0; }
+    .feature-header > * { position:relative; z-index:1; }
+    .feature-header h1 { font-family:'Oswald', sans-serif; font-size:3rem; color:#ff8c00; margin-bottom:16px; text-shadow:0 0 24px rgba(255,140,0,0.18); }
+    .feature-header p { max-width:800px; margin:0 auto 12px; line-height:1.75; font-size:1.08rem; }
+    .feature-pill { display:inline-block; padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#ffd2a6; font-weight:700; margin-top:10px; box-shadow:0 10px 24px rgba(0,0,0,0.12); }
+    .section-card { background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)); border-radius:18px; padding:28px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.10); box-shadow: 0 16px 40px rgba(0,0,0,0.22); position:relative; overflow:hidden; }
+    .section-card::before { content:''; position:absolute; inset:0 auto 0 0; width:5px; background: linear-gradient(180deg, #ff8c00, #ffcc66); opacity:0.9; }
+    .section-card > * { position:relative; z-index:1; }
+    .section-card h2 { font-family:'Oswald', sans-serif; color:#ffcc99; margin-bottom:16px; font-size:1.9rem; }
+    .section-card p { line-height:1.75; margin-bottom:14px; }
+    .slang-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:18px; }
+    .slang-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
+    .slang-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+    .slang-arabic { font-family:'Amiri', serif; font-size:1.8rem; color:#99ff99; margin-bottom:6px; }
+    .slang-translit { color:#ffcc66; font-style:italic; margin-bottom:6px; }
+    .slang-meaning { font-weight:700; margin-bottom:8px; }
+    .tag-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+    .tag { font-size:0.75rem; padding:4px 10px; border-radius:999px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; }
+    .tag.safe { background: rgba(0, 200, 120, 0.15); color:#99ffcc; }
+    .tag.casablanca { background: rgba(255, 120, 0, 0.15); color:#ffd2a6; }
+    .tag.playful { background: rgba(255, 0, 102, 0.15); color:#ffb5c7; }
+    .tag.caution { background: rgba(255, 80, 80, 0.15); color:#ffb3b3; }
+    .slang-note { color:#d7ecff; line-height:1.7; }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+  <div class="breadcrumb"><div class="breadcrumb-container"><a href="index.html">Home</a><span class="breadcrumb-separator">›</span><span class="breadcrumb-current">Slang & Street-Level Darija</span></div></div>
+  <main class="feature-page">
+    <section class="feature-header">
+      <h1>Slang & Street-Level Darija</h1>
+      <p>
+        Slang is where the language starts sounding alive — but also where learners can get themselves into trouble fastest.
+      </p>
+      <p>
+        The goal here is not to turn you into a performative slang goblin. It’s to help you recognize common casual speech, understand tone, and know what is safe to borrow versus what should stay in your passive understanding for now.
+      </p>
+      <div class="feature-pill">Understand it first. Use it carefully later.</div>
+    </section>
+
+    <section class="section-card">
+      <h2>How to use this page</h2>
+      <p>
+        A lot of slang is useful to <strong>understand</strong> before it is useful to <strong>say</strong>. Some expressions are harmless and warm. Others depend heavily on tone, age, social context, or how well people know you.
+      </p>
+      <p>
+        So the default rule is simple: if something is marked as more casual or playful, great — learn to hear it. Use it later, once it feels natural rather than costume-y.
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>Starter slang / casual expressions</h2>
+      <div class="slang-grid">
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag safe">safe-ish</span><span class="tag casablanca">casual</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">واخا</div>
+          <div class="slang-translit">wakha</div>
+          <div class="slang-meaning">okay / fine / agreed</div>
+          <div class="slang-note">Very common and useful. One of the first casual words worth recognizing and eventually using.</div>
+        </div>
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag safe">safe-ish</span><span class="tag playful">casual reaction</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">آه صافي</div>
+          <div class="slang-translit">ah, safi</div>
+          <div class="slang-meaning">ah okay / alright / got it</div>
+          <div class="slang-note">Very common conversational softener and reaction marker.</div>
+        </div>
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag safe">safe-ish</span><span class="tag casablanca">high-frequency</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">دابا</div>
+          <div class="slang-translit">daba</div>
+          <div class="slang-meaning">now</div>
+          <div class="slang-note">Not rude, not edgy — just very normal real-life Darija rhythm.</div>
+        </div>
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag safe">listen first</span><span class="tag playful">reaction</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">آش هاد الشي؟</div>
+          <div class="slang-translit">ash had shi?</div>
+          <div class="slang-meaning">what is this? / what’s going on here?</div>
+          <div class="slang-note">Can be curious, amused, or annoyed depending on tone. Very worth understanding.</div>
+        </div>
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag safe">listen first</span><span class="tag playful">social</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">زوين</div>
+          <div class="slang-translit">zwin</div>
+          <div class="slang-meaning">nice / pretty / good</div>
+          <div class="slang-note">Useful and common, but tone matters a lot depending on what or who you’re describing.</div>
+        </div>
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag caution">context matters</span><span class="tag playful">too easy to misuse</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">عافاك</div>
+          <div class="slang-translit">3afak</div>
+          <div class="slang-meaning">please</div>
+          <div class="slang-note">Not slang exactly, but a good example of how something simple can sound warm, blunt, or overused depending on delivery.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Rules of thumb</h2>
+      <p>
+        <strong>Use freely:</strong> casual high-frequency words that are normal and safe, like <em>wakha</em> or <em>daba</em>.
+      </p>
+      <p>
+        <strong>Use carefully:</strong> socially loaded words, reactions, compliments, and anything that depends on tone or relationship.
+      </p>
+      <p>
+        <strong>Mostly understand first:</strong> harder slang, jokey phrases, and things that might sound brilliant in one mouth and ridiculous in another.
+      </p>
+    </section>
+  </main>
+  <footer><p>&copy; 2025 BOERDARIJA. All Rights Reserved.</p></footer>
+  <script src="js/navigation.js"></script>
+</body>
+</html>
