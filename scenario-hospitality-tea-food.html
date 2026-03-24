@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BOERDARIJA | Hospitality: Tea, Food & Polite Survival</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <style>
+    .scenario-page { max-width: 1100px; margin: 0 auto; padding: 98px 16px 48px; }
+    .scenario-header { text-align: center; margin-bottom: 36px; }
+    .scenario-header h1 { font-family: 'Oswald', sans-serif; font-size: 2.8rem; color: #ff0066; margin-bottom: 16px; }
+    .scenario-header p { max-width: 780px; margin: 0 auto 12px; line-height: 1.75; font-size: 1.05rem; }
+    .scenario-pill { display: inline-block; padding: 10px 16px; border-radius: 999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #99ff99; font-weight: 700; margin-top: 10px; }
+    .section-card { background: rgba(0,0,0,0.25); border-radius: 18px; padding: 22px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 12px 34px rgba(0,0,0,0.16); }
+    .section-card h2 { font-family: 'Oswald', sans-serif; color: #ffcc99; margin-bottom: 16px; font-size: 1.55rem; }
+    .section-card p { line-height: 1.75; margin-bottom: 14px; }
+    .phrase-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 18px; }
+    .phrase-card, .dialogue-turn, .contrast-option { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 16px; border: 1px solid rgba(255,255,255,0.08); }
+    .phrase-arabic, .dialogue-arabic, .contrast-line { font-family: 'Amiri', serif; color: #99ff99; margin-bottom: 8px; }
+    .phrase-arabic { font-size: 1.8rem; }
+    .dialogue-arabic { font-size: 1.7rem; }
+    .contrast-line { font-size: 1.5rem; color: #fff; }
+    .phrase-translit, .dialogue-translit, .contrast-translit { color: #ffcc66; font-style: italic; margin-bottom: 8px; }
+    .phrase-meaning, .dialogue-meaning { font-weight: 700; margin-bottom: 10px; }
+    .phrase-note, .contrast-note { color: #d7ecff; line-height: 1.7; font-size: 0.95rem; }
+    .phrase-meta { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+    .tag { font-size: 0.75rem; padding: 4px 10px; border-radius: 999px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; }
+    .tag.safe { background: rgba(0, 200, 120, 0.15); color: #99ffcc; }
+    .tag.natural { background: rgba(0, 160, 255, 0.15); color: #aaddff; }
+    .tag.audio-ready { background: rgba(140, 255, 140, 0.12); color: #b8ffb8; }
+    .tag.needs-audio { background: rgba(255, 80, 120, 0.15); color: #ffb5c7; }
+    .challenge-box { background: rgba(255,0,102,0.08); border-left: 5px solid #ff0066; border-radius: 10px; padding: 20px; line-height: 1.75; }
+    .goal-box { max-width: 780px; margin: 18px auto 0; text-align: left; background: linear-gradient(180deg, rgba(255, 0, 102, 0.12), rgba(255, 255, 255, 0.04)); border: 1px solid rgba(255,255,255,0.12); border-left: 5px solid #ff5ca2; border-radius: 16px; padding: 18px 20px; box-shadow: 0 10px 28px rgba(0,0,0,0.14); }
+    .goal-label, .momentum-label, .interaction-kicker, .speaker-label { display:inline-block; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; margin-bottom: 8px; }
+    .goal-label, .momentum-label, .interaction-kicker, .speaker-label { color: #ffd1e3; }
+    .dialogue-list, .contrast-grid { display: grid; gap: 14px; margin-top: 16px; }
+    .dialogue-turn.you { border-left: 5px solid #00d2ff; }
+    .interaction-block { background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:22px; margin-top:18px; box-shadow: 0 12px 32px rgba(0,0,0,0.16); }
+    .interaction-question { font-size:1.02rem; line-height:1.7; margin-bottom:10px; }
+    .interaction-options { display:flex; flex-direction:column; gap:12px; margin-top:14px; }
+    .interaction-option { text-align:left; background:rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:15px 16px; cursor:pointer; transition:transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease; font-weight:600; }
+    .interaction-option:hover { transform:translateY(-1px); border-color:rgba(255,255,255,0.24); background:rgba(255,255,255,0.13); box-shadow:0 8px 20px rgba(0,0,0,0.12); }
+    .interaction-option.correct-choice { border-color: rgba(0, 200, 120, 0.38); background: rgba(0, 200, 120, 0.12); }
+    .interaction-option.wrong-choice { border-color: rgba(255, 120, 0, 0.30); }
+    .interaction-feedback { margin-top:16px; padding:15px 16px; border-radius:14px; line-height:1.7; display:none; }
+    .interaction-feedback.good { display:block; background: rgba(0, 200, 120, 0.12); border:1px solid rgba(0, 200, 120, 0.24); color:#bfffdc; }
+    .interaction-feedback.bad { display:block; background: rgba(255, 120, 0, 0.12); border:1px solid rgba(255, 120, 0, 0.24); color:#ffe2bf; }
+    .interaction-payoff { margin-top:10px; font-size:0.95rem; color:#f3d7e4; }
+    .followup-block { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.10); display:none; }
+    .followup-block.visible { display:block; }
+    .momentum-box { margin-bottom: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); border: 1px solid rgba(255,255,255,0.10); border-left: 5px solid #ffcc66; border-radius: 16px; padding: 18px 20px; box-shadow: 0 10px 28px rgba(0,0,0,0.12); }
+    .next-link { display:inline-flex; align-items:center; justify-content:center; margin-top:14px; padding:12px 16px; border-radius:999px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color:#ffb3d1; font-weight:700; text-decoration:none; }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+  <div class="breadcrumb">
+    <div class="breadcrumb-container">
+      <a href="index.html">Home</a>
+      <span class="breadcrumb-separator">›</span>
+      <a href="scenarios.html">Scenarios</a>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-current">Hospitality: Tea, Food & Polite Survival</span>
+    </div>
+  </div>
+  <main class="scenario-page">
+    <section class="scenario-header">
+      <h1>Hospitality: Tea, Food &amp; Polite Survival</h1>
+      <p>This is the moment after the greeting, when Moroccan warmth turns into sitting down, taking tea, eating something, and trying not to refuse too bluntly or accept too helplessly.</p>
+      <p>The goal is not to become culturally perfect. It is to recognize what is happening, respond warmly, and avoid sounding stiff, cold, or weirdly literal.</p>
+      <div class="goal-box">
+        <div class="goal-label">Today’s goal</div><br>
+        Leave this page able to recognize the most common hospitality moves, answer warmly, and survive polite insistence without socially crashing the room.
+      </div>
+      <div class="scenario-pill">Capability track: Handle warmth and hospitality</div>
+    </section>
+
+    <section class="section-card">
+      <h2>What you’ll hear when you arrive</h2>
+      <p>Recognition matters first here. Hospitality language often comes fast, warmly, and with repeated insistence.</p>
+      <div class="phrase-grid">
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">دخول، دخول</div>
+          <div class="phrase-translit">dkhul, dkhul</div>
+          <div class="phrase-meaning">Come in, come in</div>
+          <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag needs-audio">listen for this</span></div>
+          <div class="phrase-note">Very normal. Repetition often means warmth, not urgency.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">جلس، جلس</div>
+          <div class="phrase-translit">gls, gls</div>
+          <div class="phrase-meaning">Sit, sit</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag needs-audio">listen for this</span></div>
+          <div class="phrase-note">You are being welcomed into the scene, not commanded like a soldier.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">خد أتاي</div>
+          <div class="phrase-translit">khud atay</div>
+          <div class="phrase-meaning">Have some tea</div>
+          <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag needs-audio">listen for this</span></div>
+          <div class="phrase-note">One of the most important hospitality phrases to recognize fast.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">كل شوية</div>
+          <div class="phrase-translit">kul shwiya</div>
+          <div class="phrase-meaning">Eat a little</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag needs-audio">listen for this</span></div>
+          <div class="phrase-note">Often means: please accept the warmth, not just the food.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">ما تحشمش</div>
+          <div class="phrase-translit">ma t7shmsh</div>
+          <div class="phrase-meaning">Don’t be shy</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag needs-audio">listen for this</span></div>
+          <div class="phrase-note">This is social permission and insistence rolled together.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">زيد</div>
+          <div class="phrase-translit">zid</div>
+          <div class="phrase-meaning">Have more / take more</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag needs-audio">listen for this</span></div>
+          <div class="phrase-note">The moment you realize one “no thanks” may not be the end of the matter.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Safest replies</h2>
+      <p>You do not need fancy cultural fluency here. You need warm, believable, low-risk replies.</p>
+      <div class="phrase-grid">
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">شكراً بزاف</div>
+          <div class="phrase-translit">shukran bzzaf</div>
+          <div class="phrase-meaning">Thank you very much</div>
+          <div class="phrase-meta"><span class="tag safe">safe</span></div>
+          <div class="phrase-note">Your safest anchor line. Warm, simple, useful everywhere in the scene.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">شوية، عفاك</div>
+          <div class="phrase-translit">shwiya, 3afak</div>
+          <div class="phrase-meaning">Just a little, please</div>
+          <div class="phrase-meta"><span class="tag safe">safe</span></div>
+          <div class="phrase-note">Excellent when you want to accept without opening the floodgates completely.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">بنين بزاف</div>
+          <div class="phrase-translit">bnin bzzaf</div>
+          <div class="phrase-meaning">It’s very tasty</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span></div>
+          <div class="phrase-note">Complimenting the food is often socially smarter than overexplaining your appetite.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">صافي، شبعت</div>
+          <div class="phrase-translit">safi, shb3t</div>
+          <div class="phrase-meaning">Okay, I’m full</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span></div>
+          <div class="phrase-note">A softer end-point than a flat hard refusal. Much safer socially.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>What they really mean</h2>
+      <div class="challenge-box">
+        <strong>Hospitality is not just about food.</strong><br><br>
+        When someone says <em>kul shwiya</em> or <em>khud atay</em>, they are often really saying: accept the warmth, relax, don’t stand there like a suspicious diplomat.
+        <br><br>
+        When they say <em>ma t7shmsh</em>, they do not mean you have committed a crime of shyness. They mean: you are welcome here, take part, let the social wall come down.
+        <br><br>
+        This is why soft refusal matters more than literal refusal. Warmth first, appetite second.
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Panic-proof hospitality sequence</h2>
+      <div class="challenge-box">
+        <strong>Use this if your social processor crashes:</strong><br><br>
+        1. <em>shukran bzzaf</em><br>
+        2. <em>shwiya, 3afak</em><br>
+        3. <em>bnin bzzaf</em><br>
+        4. <em>safi, shb3t</em><br><br>
+        This is already enough to survive a lot of warmth with dignity.
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Mini dialogue</h2>
+      <div class="dialogue-list">
+        <div class="dialogue-turn">
+          <div class="speaker-label">Host</div>
+          <div class="dialogue-arabic" lang="ar" dir="rtl">دخول، دخول</div>
+          <div class="dialogue-translit">dkhul, dkhul</div>
+          <div class="dialogue-meaning">Come in, come in.</div>
+        </div>
+        <div class="dialogue-turn you">
+          <div class="speaker-label">You</div>
+          <div class="dialogue-arabic" lang="ar" dir="rtl">شكراً بزاف</div>
+          <div class="dialogue-translit">shukran bzzaf</div>
+          <div class="dialogue-meaning">Thank you very much.</div>
+        </div>
+        <div class="dialogue-turn">
+          <div class="speaker-label">Host</div>
+          <div class="dialogue-arabic" lang="ar" dir="rtl">جلس، خد أتاي، ما تحشمش</div>
+          <div class="dialogue-translit">gls, khud atay, ma t7shmsh</div>
+          <div class="dialogue-meaning">Sit, have some tea, don’t be shy.</div>
+        </div>
+        <div class="dialogue-turn you">
+          <div class="speaker-label">You</div>
+          <div class="dialogue-arabic" lang="ar" dir="rtl">شوية، عفاك</div>
+          <div class="dialogue-translit">shwiya, 3afak</div>
+          <div class="dialogue-meaning">Just a little, please.</div>
+        </div>
+        <div class="dialogue-turn">
+          <div class="speaker-label">Host</div>
+          <div class="dialogue-arabic" lang="ar" dir="rtl">زيد شوية</div>
+          <div class="dialogue-translit">zid shwiya</div>
+          <div class="dialogue-meaning">Have a little more.</div>
+        </div>
+        <div class="dialogue-turn you">
+          <div class="speaker-label">You</div>
+          <div class="dialogue-arabic" lang="ar" dir="rtl">بنين بزاف، صافي شبعت</div>
+          <div class="dialogue-translit">bnin bzzaf, safi shb3t</div>
+          <div class="dialogue-meaning">It’s very tasty, okay, I’m full.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Natural vs stiff</h2>
+      <div class="contrast-grid">
+        <div class="contrast-option">
+          <div class="momentum-label">Safer warm reply</div>
+          <div class="contrast-line" lang="ar" dir="rtl">شوية، عفاك</div>
+          <div class="contrast-translit">shwiya, 3afak</div>
+          <div class="contrast-note">Accepts the warmth while keeping a gentle limit. Very useful beginner move.</div>
+        </div>
+        <div class="contrast-option">
+          <div class="momentum-label">Too flat</div>
+          <div class="contrast-line" lang="ar" dir="rtl">لا، لا أريد</div>
+          <div class="contrast-translit">la, la urid</div>
+          <div class="contrast-note">Understandable, but too direct and too classroom-shaped for a warm hospitality moment.</div>
+        </div>
+        <div class="contrast-option">
+          <div class="momentum-label">Better social instinct</div>
+          <div class="contrast-line" lang="ar" dir="rtl">بنين بزاف، صافي شبعت</div>
+          <div class="contrast-translit">bnin bzzaf, safi shb3t</div>
+          <div class="contrast-note">Compliment first, limit second. Much more socially graceful.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Try a tiny interaction</h2>
+      <div class="interaction-block">
+        <div class="interaction-kicker">Step 1 · Pick the safest everyday option</div>
+        <div class="interaction-question"><strong>Host says:</strong> <em>khud atay</em><br><strong>What is the safest warm reply?</strong></div>
+        <div class="interaction-options">
+          <button class="interaction-option" data-correct="true" data-feedback="Yes — this accepts the warmth without sounding too formal or too abrupt.">شوية، عفاك</button>
+          <button class="interaction-option" data-correct="false" data-feedback="Understandable, but too flat and too direct for this kind of warm moment.">لا، لا أريد</button>
+          <button class="interaction-option" data-correct="false" data-feedback="Grammatically lofty, socially awkward. This sounds like you are rejecting hospitality from inside a textbook.">شكراً، أنا لا أشرب الشاي</button>
+        </div>
+        <div class="interaction-feedback" aria-live="polite"></div>
+        <div class="followup-block">
+          <div class="interaction-kicker">Step 2 · What you’ll probably hear next</div>
+          <div class="interaction-question"><strong>Good. What might come next?</strong></div>
+          <div class="interaction-options">
+            <button class="interaction-option" data-correct="true" data-feedback="Exactly. This is one of the most realistic next lines once hospitality insistence wakes up.">ما تحشمش</button>
+            <button class="interaction-option" data-correct="false" data-feedback="Possible in the universe, but far less likely than another warm nudge to eat or drink more.">فين غادي؟</button>
+            <button class="interaction-option" data-correct="false" data-feedback="Wrong social temperature entirely. This is too formal and too distant for the moment.">هل تريد المغادرة؟</button>
+          </div>
+          <div class="interaction-feedback" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card next-steps">
+      <h2>Where to go next</h2>
+      <div class="momentum-box">
+        <div class="momentum-label">You can now do this</div><br>
+        Recognize basic hospitality language, answer more warmly, and survive a little social insistence without sounding cold or panicked.<br><br>
+        <div class="momentum-label">Next useful step</div><br>
+        This strengthens the warmth-and-hospitality track. Family / Social broadens that same instinct across greetings, arrival, and being around people more naturally.<br><br>
+        <div class="momentum-label">Why this next</div><br>
+        Together, these pages start building a much more believable social presence instead of just transactional usefulness.
+      </div>
+      <a class="next-link" href="scenario-family-social.html">Go to Family / Social →</a>
+    </section>
+  </main>
+
+  <script src="js/navigation.js"></script>
+  <script>
+    document.addEventListener('click', (e) => {
+      const interactionButton = e.target.closest('.interaction-option');
+      if (!interactionButton) return;
+      const scope = interactionButton.closest('.followup-block, .interaction-block');
+      const feedback = scope.querySelector(':scope > .interaction-feedback') || scope.querySelector('.interaction-feedback');
+      const isCorrect = interactionButton.dataset.correct === 'true';
+      const message = interactionButton.dataset.feedback || '';
+      const allOptions = scope.querySelectorAll('.interaction-option');
+      allOptions.forEach(btn => btn.classList.remove('correct-choice', 'wrong-choice'));
+      interactionButton.classList.add(isCorrect ? 'correct-choice' : 'wrong-choice');
+      feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
+      feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}${isCorrect ? '<div class="interaction-payoff">Good — you’d handle this much more naturally than a flat literal refusal.</div>' : ''}`;
+      if (isCorrect) {
+        const parentBlock = interactionButton.closest('.interaction-block');
+        const followup = parentBlock && parentBlock.querySelector('.followup-block');
+        if (followup && !interactionButton.closest('.followup-block')) {
+          followup.classList.add('visible');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
