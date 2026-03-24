@@ -53,6 +53,13 @@
     .contrast-translit { color:#ffcc66; font-style:italic; }
     .contrast-note { margin-top:8px; line-height:1.7; color:#d7ecff; }
     .challenge-box { background: rgba(255,0,102,0.08); border-left:5px solid #ff0066; border-radius:10px; padding:20px; line-height:1.75; }
+    .interaction-block { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 20px; margin-top: 16px; }
+    .interaction-options { display:flex; flex-direction:column; gap:12px; margin-top:14px; }
+    .interaction-option { text-align:left; background: rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:14px 16px; cursor:pointer; transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; font-weight:600; }
+    .interaction-option:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.12); }
+    .interaction-feedback { margin-top: 16px; padding: 14px 16px; border-radius: 12px; line-height: 1.7; display:none; }
+    .interaction-feedback.good { display:block; background: rgba(0, 200, 120, 0.12); border:1px solid rgba(0, 200, 120, 0.22); color:#bfffdc; }
+    .interaction-feedback.bad { display:block; background: rgba(255, 120, 0, 0.12); border:1px solid rgba(255, 120, 0, 0.22); color:#ffe2bf; }
   </style>
 </head>
 <body>
@@ -172,6 +179,21 @@
     </section>
 
     <section class="section-card">
+      <h2>Try a tiny interaction</h2>
+      <p>This one teaches warmth, not just correctness.</p>
+      <div class="interaction-block" data-interaction="family-natural-choice">
+        <strong>You arrive at someone’s home.</strong><br>
+        <strong>What is the safest warm opening?</strong>
+        <div class="interaction-options">
+          <button class="interaction-option" data-correct="false" data-feedback="Understood, but much too formal and classroom-shaped for this social setting.">مرحبا، كيف حالك؟</button>
+          <button class="interaction-option" data-correct="true" data-feedback="Yes — warm, normal, and socially grounded. This is the kind of thing the page wants you to reach for first.">السلام عليكم، لباس؟</button>
+          <button class="interaction-option" data-correct="false" data-feedback="Not wrong as a tiny casual greeting, but weaker and less warm as a first line when arriving at someone’s home.">سلام</button>
+        </div>
+        <div class="interaction-feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section-card">
       <h2>Quick practice</h2>
       <div class="challenge-box">
         <strong>Mini challenge:</strong> You arrive at someone’s home and want to greet them warmly but simply. A very safe mini-sequence is:<br><br>
@@ -185,6 +207,16 @@
   <script>
     let scenarioAudio = null;
     document.addEventListener('click', (e) => {
+      const interactionButton = e.target.closest('.interaction-option');
+      if (interactionButton) {
+        const block = interactionButton.closest('.interaction-block');
+        const feedback = block.querySelector('.interaction-feedback');
+        const isCorrect = interactionButton.dataset.correct === 'true';
+        const message = interactionButton.dataset.feedback || '';
+        feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
+        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        return;
+      }
       const button = e.target.closest('.audio-btn');
       if (!button || button.classList.contains('missing')) return;
       const inlineSrc = button.dataset.audioInline;
