@@ -314,8 +314,9 @@
       <h2>Try a tiny interaction</h2>
       <p>One small choice, one small correction — that’s enough to reinforce the product’s philosophy.</p>
       <div class="interaction-block" data-interaction="cafe-natural-choice">
-        <strong>You want tea in a normal café.</strong><br>
-        <strong>Which is the best everyday option?</strong>
+        <div class="interaction-kicker">Step 1 · Pick the safest everyday option</div>
+        <div class="interaction-question"><strong>You want tea in a normal café.</strong><br>
+        <strong>Which is the best everyday option?</strong></div>
         <div class="interaction-options">
           <button class="interaction-option" data-correct="false" data-feedback="Understandable, but too classroom-shaped for a normal café order. You can do much better with much less effort.">أريد شايا من فضلك</button>
           <button class="interaction-option" data-correct="true" data-feedback="Yes — this is the best everyday choice: easy to say, easy to hear back, and completely normal in the scene.">بغيت أتاي، عفاك</button>
@@ -323,7 +324,8 @@
         </div>
         <div class="interaction-feedback" aria-live="polite"></div>
         <div class="followup-block">
-          <strong>Good. What might come back next?</strong>
+          <div class="interaction-kicker">Step 2 · What you’ll probably hear next</div>
+          <div class="interaction-question"><strong>Good. What might come back next?</strong></div>
           <div class="interaction-options">
             <button class="interaction-option" data-correct="true" data-feedback="Exactly. This is a very normal next move from the server once the order is in motion.">واش بغيتي القهوة؟</button>
             <button class="interaction-option" data-correct="false" data-feedback="Possible eventually, but too abrupt as the immediate next beat in most normal café exchanges.">جيب ليا الفاتورة</button>
@@ -376,8 +378,11 @@
         const feedback = scope.querySelector(':scope > .interaction-feedback') || scope.querySelector('.interaction-feedback');
         const isCorrect = interactionButton.dataset.correct === 'true';
         const message = interactionButton.dataset.feedback || '';
+        const allOptions = scope.querySelectorAll('.interaction-option');
+        allOptions.forEach(btn => btn.classList.remove('correct-choice', 'wrong-choice'));
+        interactionButton.classList.add(isCorrect ? 'correct-choice' : 'wrong-choice');
         feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
-        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}${isCorrect ? '<div class="interaction-payoff">Good — you'd handle this fine in real life.</div>' : ''}`;
         if (isCorrect) {
           const parentBlock = interactionButton.closest('.interaction-block');
           const followup = parentBlock && parentBlock.querySelector('.followup-block');

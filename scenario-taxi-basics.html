@@ -571,8 +571,9 @@
       <h2>Try a tiny interaction</h2>
       <p>This is the kind of lightweight interaction that could make the whole site feel more alive without turning it into a bloated app.</p>
       <div class="interaction-block" data-interaction="taxi-natural-choice">
-        <strong>Driver says:</strong> <em>l-fin?</em><br>
-        <strong>What is the best everyday reply?</strong>
+        <div class="interaction-kicker">Step 1 · Pick the safest everyday option</div>
+        <div class="interaction-question"><strong>Driver says:</strong> <em>l-fin?</em><br>
+        <strong>What is the best everyday reply?</strong></div>
         <div class="interaction-options">
           <button class="interaction-option" data-correct="false" data-feedback="Understandable, but this sounds classroom-stiff. A real taxi exchange wants something shorter, quicker, and less translated.">أريد الذهاب إلى المعاريف</button>
           <button class="interaction-option" data-correct="true" data-feedback="Yes — this is the safest everyday choice. Short, normal, and exactly the kind of line that still works when your brain is under mild taxi stress.">بغيت نمشي للمعاريف</button>
@@ -580,7 +581,8 @@
         </div>
         <div class="interaction-feedback" aria-live="polite"></div>
         <div class="followup-block">
-          <strong>Nice. What might the driver say next?</strong>
+          <div class="interaction-kicker">Step 2 · What you’ll probably hear next</div>
+          <div class="interaction-question"><strong>Nice. What might the driver say next?</strong></div>
           <div class="interaction-options">
             <button class="interaction-option" data-correct="true" data-feedback="Exactly. This is a very normal next question once you give a destination.">واش قريب ولا بعيد؟</button>
             <button class="interaction-option" data-correct="false" data-feedback="Possible in some contexts, but not the most likely immediate next move after you give a destination.">شكرا بزاف</button>
@@ -634,8 +636,11 @@
         const feedback = scope.querySelector(':scope > .interaction-feedback') || scope.querySelector('.interaction-feedback');
         const isCorrect = interactionButton.dataset.correct === 'true';
         const message = interactionButton.dataset.feedback || '';
+        const allOptions = scope.querySelectorAll('.interaction-option');
+        allOptions.forEach(btn => btn.classList.remove('correct-choice', 'wrong-choice'));
+        interactionButton.classList.add(isCorrect ? 'correct-choice' : 'wrong-choice');
         feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
-        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}${isCorrect ? '<div class="interaction-payoff">Good — you'd handle this fine in real life.</div>' : ''}`;
         if (isCorrect) {
           const parentBlock = interactionButton.closest('.interaction-block');
           const followup = parentBlock && parentBlock.querySelector('.followup-block');

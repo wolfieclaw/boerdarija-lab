@@ -202,8 +202,9 @@
       <h2>Try a tiny interaction</h2>
       <p>This one teaches warmth, not just correctness.</p>
       <div class="interaction-block" data-interaction="family-natural-choice">
-        <strong>You arrive at someone’s home.</strong><br>
-        <strong>What is the safest warm opening?</strong>
+        <div class="interaction-kicker">Step 1 · Pick the safest everyday option</div>
+        <div class="interaction-question"><strong>You arrive at someone’s home.</strong><br>
+        <strong>What is the safest warm opening?</strong></div>
         <div class="interaction-options">
           <button class="interaction-option" data-correct="false" data-feedback="Understandable, but too formal for a warm home arrival. It sounds correct in theory and slightly strange in practice.">مرحبا، كيف حالك؟</button>
           <button class="interaction-option" data-correct="true" data-feedback="Yes — this is the safest warm choice. It sounds socially grounded, human, and much more at home in the room.">السلام عليكم، لباس؟</button>
@@ -211,7 +212,8 @@
         </div>
         <div class="interaction-feedback" aria-live="polite"></div>
         <div class="followup-block">
-          <strong>Good. What might the host say next?</strong>
+          <div class="interaction-kicker">Step 2 · What you’ll probably hear next</div>
+          <div class="interaction-question"><strong>Good. What might the host say next?</strong></div>
           <div class="interaction-options">
             <button class="interaction-option" data-correct="true" data-feedback="Exactly. This is a very normal hospitality move and the kind of phrase you want your ear to recognize fast.">دخول، دخول</button>
             <button class="interaction-option" data-correct="false" data-feedback="Possible much later in a visit, but too abrupt and oddly specific as the immediate next line.">فينك دابا؟</button>
@@ -259,8 +261,11 @@
         const feedback = scope.querySelector(':scope > .interaction-feedback') || scope.querySelector('.interaction-feedback');
         const isCorrect = interactionButton.dataset.correct === 'true';
         const message = interactionButton.dataset.feedback || '';
+        const allOptions = scope.querySelectorAll('.interaction-option');
+        allOptions.forEach(btn => btn.classList.remove('correct-choice', 'wrong-choice'));
+        interactionButton.classList.add(isCorrect ? 'correct-choice' : 'wrong-choice');
         feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
-        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}${isCorrect ? '<div class="interaction-payoff">Good — you'd handle this fine in real life.</div>' : ''}`;
         if (isCorrect) {
           const parentBlock = interactionButton.closest('.interaction-block');
           const followup = parentBlock && parentBlock.querySelector('.followup-block');
