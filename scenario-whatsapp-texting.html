@@ -70,6 +70,8 @@
     .interaction-feedback { margin-top: 16px; padding: 14px 16px; border-radius: 12px; line-height: 1.7; display:none; }
     .interaction-feedback.good { display:block; background: rgba(0, 200, 120, 0.12); border:1px solid rgba(0, 200, 120, 0.22); color:#bfffdc; }
     .interaction-feedback.bad { display:block; background: rgba(255, 120, 0, 0.12); border:1px solid rgba(255, 120, 0, 0.22); color:#ffe2bf; }
+    .followup-block { margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.10); display:none; }
+    .followup-block.visible { display:block; }
 
     .next-steps-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:18px; }
     .next-step-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
@@ -305,6 +307,15 @@
           <button class="interaction-option" data-correct="false" data-feedback="Useful phrase, wrong moment. It skips the actual answer and makes the exchange feel socially off-balance.">سيفط ليا اللوكيشن</button>
         </div>
         <div class="interaction-feedback" aria-live="polite"></div>
+        <div class="followup-block">
+          <strong>Good. What might come next in a real thread?</strong>
+          <div class="interaction-options">
+            <button class="interaction-option" data-correct="true" data-feedback="Exactly. Once location gets fuzzy, this is one of the most realistic next messages in the world.">سيفط ليا اللوكيشن</button>
+            <button class="interaction-option" data-correct="false" data-feedback="Possible later, but too formal and too weirdly complete for the next natural message beat.">أنا في طريقي الآن شكرا</button>
+            <button class="interaction-option" data-correct="false" data-feedback="You could say this at some point, but it is not the most likely next move from the other person.">أنا هنا</button>
+          </div>
+          <div class="interaction-feedback" aria-live="polite"></div>
+        </div>
       </div>
     </section>
 
@@ -341,12 +352,19 @@
     document.addEventListener('click', (e) => {
       const interactionButton = e.target.closest('.interaction-option');
       if (interactionButton) {
-        const block = interactionButton.closest('.interaction-block');
-        const feedback = block.querySelector('.interaction-feedback');
+        const scope = interactionButton.closest('.followup-block, .interaction-block');
+        const feedback = scope.querySelector(':scope > .interaction-feedback') || scope.querySelector('.interaction-feedback');
         const isCorrect = interactionButton.dataset.correct === 'true';
         const message = interactionButton.dataset.feedback || '';
         feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
         feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        if (isCorrect) {
+          const parentBlock = interactionButton.closest('.interaction-block');
+          const followup = parentBlock && parentBlock.querySelector('.followup-block');
+          if (followup && !interactionButton.closest('.followup-block')) {
+            followup.classList.add('visible');
+          }
+        }
         return;
       }
       const button = e.target.closest('.audio-btn');
