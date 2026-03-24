@@ -11,6 +11,99 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="alternate icon" href="favicon.ico">
+    <style>
+        .hero {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255, 0, 102, 0.14), transparent 55%);
+            filter: blur(10px);
+            pointer-events: none;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-note {
+            display: inline-block;
+            margin-bottom: 18px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #99ff99;
+            font-weight: 700;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.14);
+        }
+        .hero-description {
+            max-width: 860px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .featured-strip {
+            max-width: 1200px;
+            margin: -10px auto 50px;
+            padding: 0 20px;
+        }
+        .featured-panel {
+            background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.10);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+        }
+        .featured-panel h2 {
+            font-family: 'Oswald', sans-serif;
+            margin-bottom: 12px;
+            color: #ffcc99;
+            font-size: 2rem;
+        }
+        .featured-panel p {
+            line-height: 1.75;
+            margin-bottom: 18px;
+        }
+        .featured-links {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .featured-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: transform 0.16s ease, opacity 0.16s ease;
+        }
+        .featured-links a:hover {
+            transform: translateY(-2px);
+            opacity: 0.96;
+        }
+        .feature-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.10);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+            position: relative;
+            overflow: hidden;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 5px;
+            background: linear-gradient(180deg, #ff0066, #ffcc66);
+            opacity: 0.9;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,6 +113,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
+            <div class="hero-note">Casablanca-first • scenario-driven • human-sounding Darija</div>
             <h1 class="hero-logo floating">BOERDARIJA</h1>
             <p class="hero-subtitle" lang="ar" dir="rtl">تعلّم الدارجة المغربية بسهولة</p>
             <p class="hero-description">
@@ -31,6 +125,22 @@
                 <a href="scenarios.html" class="btn btn-primary glow">Start with Useful Situations</a>
                 <a href="vocabulary-game.html" class="btn btn-secondary">Play a Quick Game</a>
                 <a href="dictionary.html" class="btn btn-secondary">Browse the Dictionary</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="featured-strip">
+        <div class="featured-panel">
+            <h2>Start with situations, not grammar fog</h2>
+            <p>
+                The strongest direction in BoerDarija Lab is practical: learn the language of taxis, cafés, markets, WhatsApp,
+                and everyday social life first — then let the broader structure grow around what is actually useful.
+            </p>
+            <div class="featured-links">
+                <a href="scenario-taxi-basics.html">Taxi Basics</a>
+                <a href="scenario-cafe-ordering.html">Café Ordering</a>
+                <a href="scenario-market-bargaining.html">Market Bargaining</a>
+                <a href="scenario-whatsapp-texting.html">WhatsApp Style</a>
             </div>
         </div>
     </section>
