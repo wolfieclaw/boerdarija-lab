@@ -111,7 +111,8 @@
           <div class="phrase-translit">WhatsApp</div>
           <div class="phrase-meaning">WhatsApp</div>
           <div class="phrase-meta"><span class="tag casablanca">modern life</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Not language genius, just reality.</div>
         </div>
         <div class="phrase-card" data-audio="audio/message.mp3">
@@ -119,7 +120,8 @@
           <div class="phrase-translit">message</div>
           <div class="phrase-meaning">Message</div>
           <div class="phrase-meta"><span class="tag casablanca">modern life</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Useful because modern communication is full of borrowed words.</div>
         </div>
         <div class="phrase-card" data-audio="audio/fayn.mp3">
@@ -127,7 +129,8 @@
           <div class="phrase-translit">fayn?</div>
           <div class="phrase-meaning">Where?</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">The building block behind all location messages.</div>
         </div>
         <div class="phrase-card" data-audio="audio/hna.mp3">
@@ -135,7 +138,8 @@
           <div class="phrase-translit">hna</div>
           <div class="phrase-meaning">Here</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">One of the most useful words in the whole language, honestly.</div>
         </div>
         <div class="phrase-card" data-audio="audio/daba.mp3">
@@ -143,7 +147,8 @@
           <div class="phrase-translit">daba</div>
           <div class="phrase-meaning">Now</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Appears constantly in real messages and calls.</div>
         </div>
         <div class="phrase-card" data-audio="audio/gheda.mp3">
@@ -151,7 +156,8 @@
           <div class="phrase-translit">gheda</div>
           <div class="phrase-meaning">Tomorrow</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Useful for rescheduling without drama.</div>
         </div>
         <div class="phrase-card" data-audio="audio/m3ttl.mp3">
@@ -159,7 +165,8 @@
           <div class="phrase-translit">m3ttl</div>
           <div class="phrase-meaning">Late</div>
           <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">High-value because lateness is universal, sadly.</div>
         </div>
         <div class="phrase-card" data-audio="audio/tilifun.mp3">
@@ -167,7 +174,8 @@
           <div class="phrase-translit">tilifun</div>
           <div class="phrase-meaning">Phone</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Useful for call-me / phone / number contexts.</div>
         </div>
         <div class="phrase-card">
@@ -362,7 +370,18 @@
   <footer><p>&copy; 2025 BOERDARIJA. All Rights Reserved.</p></footer>
   <script src="js/navigation.js"></script>
   <script>
-    let scenarioAudio = null;
+    let scenarioAudio = new Audio();
+    let currentStatus = null;
+
+    scenarioAudio.addEventListener('playing', () => {
+      if (currentStatus) currentStatus.textContent = 'Playing audio…';
+    });
+    scenarioAudio.addEventListener('ended', () => {
+      if (currentStatus) currentStatus.textContent = 'Finished.';
+    });
+    scenarioAudio.addEventListener('error', () => {
+      if (currentStatus) currentStatus.textContent = 'Audio failed to load on this page.';
+    });
     document.addEventListener('click', (e) => {
       const interactionButton = e.target.closest('.interaction-option');
       if (interactionButton) {

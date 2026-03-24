@@ -112,7 +112,8 @@
           <div class="phrase-translit">atay</div>
           <div class="phrase-meaning">Tea</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">You will hear this constantly. Worth learning early.</div>
         </div>
 
@@ -121,7 +122,8 @@
           <div class="phrase-translit">qhwa</div>
           <div class="phrase-meaning">Coffee</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Short, common, and much more useful than a formal classroom version.</div>
         </div>
 
@@ -130,7 +132,8 @@
           <div class="phrase-translit">qr3a dyal l-ma</div>
           <div class="phrase-meaning">A bottle of water</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Very useful if you want water in a café or kiosk.</div>
         </div>
 
@@ -139,7 +142,8 @@
           <div class="phrase-translit">hlib</div>
           <div class="phrase-meaning">Milk</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Useful if you are modifying coffee or tea.</div>
         </div>
 
@@ -148,7 +152,8 @@
           <div class="phrase-translit">skkar</div>
           <div class="phrase-meaning">Sugar</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Vital if you want to survive Moroccan tea without accidentally drinking syrup.</div>
         </div>
 
@@ -157,7 +162,8 @@
           <div class="phrase-translit">bghit</div>
           <div class="phrase-meaning">I want</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">The workhorse verb of low-drama usefulness.</div>
         </div>
 
@@ -166,7 +172,8 @@
           <div class="phrase-translit">l-fatura</div>
           <div class="phrase-meaning">The bill</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">You need this more than vocabulary about ancient poetic desert camels.</div>
         </div>
 
@@ -175,7 +182,8 @@
           <div class="phrase-translit">bghina</div>
           <div class="phrase-meaning">We want</div>
           <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Useful if you are with friends or ordering for more than one person.</div>
         </div>
 
@@ -217,7 +225,8 @@
           <div class="phrase-translit">shnu bghiti?</div>
           <div class="phrase-meaning">What do you want?</div>
           <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Very common, very useful, and worth recognizing instantly.</div>
         </div>
         <div class="phrase-card" data-audio="audio/lessons/wash_bghiti_l_qhwa.mp3">
@@ -225,7 +234,8 @@
           <div class="phrase-translit">wash bghiti l-qhwa?</div>
           <div class="phrase-meaning">Do you want coffee?</div>
           <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div>
-          <button class="audio-btn" type="button">▶ Play</button>
+          <button class="audio-btn" type="button">▶ Play audio</button>
+          <div class="audio-status" aria-live="polite"></div>
           <div class="phrase-note">Useful because cafés often move quickly and assume context.</div>
         </div>
         <div class="phrase-card">
@@ -381,7 +391,18 @@
 
   <script src="js/navigation.js"></script>
   <script>
-    let scenarioAudio = null;
+    let scenarioAudio = new Audio();
+    let currentStatus = null;
+
+    scenarioAudio.addEventListener('playing', () => {
+      if (currentStatus) currentStatus.textContent = 'Playing audio…';
+    });
+    scenarioAudio.addEventListener('ended', () => {
+      if (currentStatus) currentStatus.textContent = 'Finished.';
+    });
+    scenarioAudio.addEventListener('error', () => {
+      if (currentStatus) currentStatus.textContent = 'Audio failed to load on this page.';
+    });
 
     document.addEventListener('click', (e) => {
       const interactionButton = e.target.closest('.interaction-option');
@@ -413,13 +434,18 @@
       const src = inlineSrc || (block && block.dataset.audio);
       if (!src) return;
 
-      if (scenarioAudio) {
-        scenarioAudio.pause();
-        scenarioAudio.currentTime = 0;
-      }
+      document.querySelectorAll('.audio-status').forEach(el => el.textContent = '');
+      currentStatus = (button.closest('.phrase-card, .dialogue-turn, .contrast-option, [data-audio]') || block)?.querySelector('.audio-status');
+      if (currentStatus) currentStatus.textContent = 'Loading audio…';
 
-      scenarioAudio = new Audio(src);
-      scenarioAudio.play().catch(err => console.error('Audio play failed', err));
+      scenarioAudio.pause();
+      scenarioAudio.currentTime = 0;
+      scenarioAudio.src = src;
+      scenarioAudio.load();
+      scenarioAudio.play().catch(err => {
+        if (currentStatus) currentStatus.textContent = `Audio failed: ${err && err.message ? err.message : 'unknown error'}`;
+        console.error('Audio play failed', err);
+      });
     });
   </script>
 </body>
