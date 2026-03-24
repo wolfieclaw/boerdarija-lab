@@ -54,6 +54,13 @@
     .contrast-translit { color:#ffcc66; font-style:italic; }
     .contrast-note { margin-top:8px; line-height:1.7; color:#d7ecff; }
     .challenge-box { background: rgba(255,0,102,0.08); border-left:5px solid #ff0066; border-radius:10px; padding:20px; line-height:1.75; }
+    .interaction-block { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 20px; margin-top: 16px; }
+    .interaction-options { display:flex; flex-direction:column; gap:12px; margin-top:14px; }
+    .interaction-option { text-align:left; background: rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:14px 16px; cursor:pointer; transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; font-weight:600; }
+    .interaction-option:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.12); }
+    .interaction-feedback { margin-top: 16px; padding: 14px 16px; border-radius: 12px; line-height: 1.7; display:none; }
+    .interaction-feedback.good { display:block; background: rgba(0, 200, 120, 0.12); border:1px solid rgba(0, 200, 120, 0.22); color:#bfffdc; }
+    .interaction-feedback.bad { display:block; background: rgba(255, 120, 0, 0.12); border:1px solid rgba(255, 120, 0, 0.22); color:#ffe2bf; }
 
     .next-steps-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:18px; }
     .next-step-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
@@ -176,6 +183,50 @@
     </section>
 
     <section class="section-card">
+      <h2>What you’ll hear back</h2>
+      <p>In markets, the hard part is often not your first phrase — it’s hearing the seller’s confidence and not immediately collapsing into agreement.</p>
+      <div class="phrase-grid">
+        <div class="phrase-card" data-audio="audio/kam_hada.mp3">
+          <div class="phrase-arabic" lang="ar" dir="rtl">كام هادا؟</div>
+          <div class="phrase-translit">kam hada?</div>
+          <div class="phrase-meaning">How much is this?</div>
+          <div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div>
+          <button class="audio-btn" type="button">▶ Play</button>
+          <div class="phrase-note">Start here. It gets you into the interaction without overthinking it.</div>
+        </div>
+        <div class="phrase-card" data-audio="audio/lessons/mashi_ghali.mp3">
+          <div class="phrase-arabic" lang="ar" dir="rtl">ماشي غالي</div>
+          <div class="phrase-translit">mashi ghali</div>
+          <div class="phrase-meaning">It’s not expensive</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div>
+          <button class="audio-btn" type="button">▶ Play</button>
+          <div class="phrase-note">One of those lines you may hear even when reality suggests otherwise.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">آخر ثمن</div>
+          <div class="phrase-translit">akher taman</div>
+          <div class="phrase-meaning">final price</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag needs-audio">listen for this</span></div>
+          <button class="audio-btn missing" type="button">Audio later</button>
+          <div class="phrase-note">Very useful to recognize if you start negotiating more actively.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Panic-proof bargaining sequence</h2>
+      <p>If your bargaining courage is thin, this is enough to get through a basic price exchange without drama.</p>
+      <div class="challenge-box">
+        <strong>Use this if you blank:</strong><br><br>
+        1. <em>kam hada?</em><br>
+        2. <em>ghali bzzaf</em><br>
+        3. <em>neqqs shwiya, 3afak</em><br>
+        4. <em>safi, khllih</em> or <em>bghit hada</em><br><br>
+        That already gives you a functioning market spine.
+      </div>
+    </section>
+
+    <section class="section-card">
       <h2>Mini dialogue</h2>
       <div class="dialogue-list">
         <div class="dialogue-turn">
@@ -235,6 +286,21 @@
     </section>
 
     <section class="section-card">
+      <h2>Try a tiny interaction</h2>
+      <p>This one teaches the difference between workable market Darija and overformal museum-language.</p>
+      <div class="interaction-block" data-interaction="market-natural-choice">
+        <strong>You want to ask the price of something in a market.</strong><br>
+        <strong>Which is the best everyday option?</strong>
+        <div class="interaction-options">
+          <button class="interaction-option" data-correct="false" data-feedback="Understandable, but too formal and heavy for a normal market interaction.">كم ثمن هذا؟</button>
+          <button class="interaction-option" data-correct="true" data-feedback="Yes — short, natural, and highly usable in the real situation.">كام هادا؟</button>
+          <button class="interaction-option" data-correct="false" data-feedback="Possible later in the interaction, but too abrupt as your opening move if you haven’t even asked the price yet.">نقّص شوية</button>
+        </div>
+        <div class="interaction-feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section-card">
       <h2>Quick practice</h2>
       <div class="challenge-box">
         <strong>Mini challenge:</strong> You see something you want, but the first price feels too high. A very serviceable sequence is:<br><br>
@@ -266,6 +332,16 @@
   <script>
     let scenarioAudio = null;
     document.addEventListener('click', (e) => {
+      const interactionButton = e.target.closest('.interaction-option');
+      if (interactionButton) {
+        const block = interactionButton.closest('.interaction-block');
+        const feedback = block.querySelector('.interaction-feedback');
+        const isCorrect = interactionButton.dataset.correct === 'true';
+        const message = interactionButton.dataset.feedback || '';
+        feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
+        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        return;
+      }
       const button = e.target.closest('.audio-btn');
       if (!button || button.classList.contains('missing')) return;
       const inlineSrc = button.dataset.audioInline;

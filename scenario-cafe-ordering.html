@@ -54,6 +54,13 @@
     .contrast-translit { color:#ffcc66; font-style:italic; }
     .contrast-note { margin-top:8px; line-height:1.7; color:#d7ecff; }
     .challenge-box { background: rgba(255,0,102,0.08); border-left:5px solid #ff0066; border-radius:10px; padding:20px; line-height:1.75; }
+    .interaction-block { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.10); border-radius: 14px; padding: 20px; margin-top: 16px; }
+    .interaction-options { display:flex; flex-direction:column; gap:12px; margin-top:14px; }
+    .interaction-option { text-align:left; background: rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.12); border-radius:12px; padding:14px 16px; cursor:pointer; transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease; font-weight:600; }
+    .interaction-option:hover { transform: translateY(-1px); border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.12); }
+    .interaction-feedback { margin-top: 16px; padding: 14px 16px; border-radius: 12px; line-height: 1.7; display:none; }
+    .interaction-feedback.good { display:block; background: rgba(0, 200, 120, 0.12); border:1px solid rgba(0, 200, 120, 0.22); color:#bfffdc; }
+    .interaction-feedback.bad { display:block; background: rgba(255, 120, 0, 0.12); border:1px solid rgba(255, 120, 0, 0.22); color:#ffe2bf; }
 
     .next-steps-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:18px; }
     .next-step-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
@@ -196,6 +203,50 @@
     </section>
 
     <section class="section-card">
+      <h2>What you’ll hear back</h2>
+      <p>One of the easiest ways to freeze in a café is hearing a short reply you technically know but don’t process fast enough.</p>
+      <div class="phrase-grid">
+        <div class="phrase-card" data-audio="audio/lessons/shnu_bghiti.mp3">
+          <div class="phrase-arabic" lang="ar" dir="rtl">شنو بغيتي؟</div>
+          <div class="phrase-translit">shnu bghiti?</div>
+          <div class="phrase-meaning">What do you want?</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div>
+          <button class="audio-btn" type="button">▶ Play</button>
+          <div class="phrase-note">Very common, very useful, and worth recognizing instantly.</div>
+        </div>
+        <div class="phrase-card" data-audio="audio/lessons/wash_bghiti_l_qhwa.mp3">
+          <div class="phrase-arabic" lang="ar" dir="rtl">واش بغيتي القهوة؟</div>
+          <div class="phrase-translit">wash bghiti l-qhwa?</div>
+          <div class="phrase-meaning">Do you want coffee?</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div>
+          <button class="audio-btn" type="button">▶ Play</button>
+          <div class="phrase-note">Useful because cafés often move quickly and assume context.</div>
+        </div>
+        <div class="phrase-card">
+          <div class="phrase-arabic" lang="ar" dir="rtl">بلا سكّر؟</div>
+          <div class="phrase-translit">bla skkar?</div>
+          <div class="phrase-meaning">Without sugar?</div>
+          <div class="phrase-meta"><span class="tag natural">natural</span><span class="tag needs-audio">listen for this</span></div>
+          <button class="audio-btn missing" type="button">Audio later</button>
+          <div class="phrase-note">A small but very realistic clarification line.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Panic-proof café sequence</h2>
+      <p>If your brain goes soft in a café, this is enough to get through it with basic dignity.</p>
+      <div class="challenge-box">
+        <strong>Use this if you blank:</strong><br><br>
+        1. <em>bghit atay, 3afak</em><br>
+        2. <em>bghit l-ma</em><br>
+        3. <em>jib lia l-fatura, 3afak</em><br>
+        4. <em>shukran</em><br><br>
+        Not glamorous. Completely useful.
+      </div>
+    </section>
+
+    <section class="section-card">
       <h2>Mini dialogue</h2>
       <div class="dialogue-list">
         <div class="dialogue-turn">
@@ -258,6 +309,21 @@
     </section>
 
     <section class="section-card">
+      <h2>Try a tiny interaction</h2>
+      <p>One small choice, one small correction — that’s enough to reinforce the product’s philosophy.</p>
+      <div class="interaction-block" data-interaction="cafe-natural-choice">
+        <strong>You want tea in a normal café.</strong><br>
+        <strong>Which is the best everyday option?</strong>
+        <div class="interaction-options">
+          <button class="interaction-option" data-correct="false" data-feedback="Understood by formal Arabic, but too classroom-shaped for a normal café interaction.">أريد شايا من فضلك</button>
+          <button class="interaction-option" data-correct="true" data-feedback="Yes — simple, normal, and the best everyday target for this situation.">بغيت أتاي، عفاك</button>
+          <button class="interaction-option" data-correct="false" data-feedback="Not impossible, but too clipped for a beginner default. Better once you’re more comfortable with the rhythm.">أتاي، عفاك</button>
+        </div>
+        <div class="interaction-feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section-card">
       <h2>Quick practice</h2>
       <div class="challenge-box">
         <strong>Mini challenge:</strong> You want tea with less sugar and then the bill. A decent simple sequence would be:<br><br>
@@ -293,6 +359,17 @@
     let scenarioAudio = null;
 
     document.addEventListener('click', (e) => {
+      const interactionButton = e.target.closest('.interaction-option');
+      if (interactionButton) {
+        const block = interactionButton.closest('.interaction-block');
+        const feedback = block.querySelector('.interaction-feedback');
+        const isCorrect = interactionButton.dataset.correct === 'true';
+        const message = interactionButton.dataset.feedback || '';
+        feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
+        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        return;
+      }
+
       const button = e.target.closest('.audio-btn');
       if (!button || button.classList.contains('missing')) return;
 
