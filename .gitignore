@@ -1,13 +1,36 @@
-# ElevenLabs API Key Files
-# These files contain sensitive API keys and should not be committed to GitHub
+# --------------------------------------------------
+# BOERDARIJA repo hygiene + secret safety
+# --------------------------------------------------
 
-# Pattern-based exclusions to catch all files with API keys
+# --- Secrets / credentials ---
+.env
+.env.*
+*.env
+*.secret
+*.secrets
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*token*
+*apikey*
+*api_key*
+*secret*
+secrets/
+credentials/
+
+# OpenClaw / local config accidents
+openclaw.json
+*.session.json
+
+# --- Audio generation / key-bearing helper scripts ---
+# Historically these are the most likely place for accidental key leaks.
 create_lesson*.py
 create_lesson_a2_*.py
 create_*_audio*.py
 fix_*_audio.py
 fix_lesson*.py
-test_*.py
 gen_*.py
 generate_*.py
 ensure_*.py
@@ -18,8 +41,7 @@ remove_api_keys_from_history.ps1
 verify_no_api_keys_in_git.py
 check_git_for_api_key.ps1
 API_KEY_SECURITY_CHECK.md
-
-# Specific files (kept for reference)
+check_github_status.py
 force_generate_audio.py
 generate_pink_audio.py
 generate_zwin_singular.py
@@ -34,42 +56,43 @@ fix_transcription_audio.py
 generate_lesson0_audio.py
 generate_lesson_audio.py
 generate_audio.py
-check_github_status.py
+test_*.py
 
-# Other sensitive files
-# Add any other files containing API keys or sensitive information here
+# --- Logs / verification artifacts / temp cleanup files ---
+*.log
+*.tmp
+temp_*.txt
+missing_audio.txt
+verify_*.txt
+status_*.txt
+report_*.txt
 
-# Python cache
+# --- Python cache / local tooling ---
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.pytest_cache/
+.mypy_cache/
 
-# Virtual environments
+# --- Virtual environments ---
 venv/
 env/
 ENV/
+.venv/
 
-# IDE files
+# --- IDE / editor ---
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS files
+# --- OS noise ---
 .DS_Store
 Thumbs.db
 
-# Temporary files
-*.tmp
-*.log
-temp_*.txt
-missing_audio.txt
-
-
-
-
-
-
-
+# --- Optional local-only work areas ---
+.audit-tmp/
+local-notes/
+scratch/
