@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BOERDARIJA | Family Visit & Social Greetings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <style>
+    .scenario-page { max-width: 1100px; margin: 0 auto; padding: 110px 20px 60px; }
+    .scenario-header { text-align: center; margin-bottom: 40px; position: relative; }
+    .scenario-header h1 { font-family: 'Oswald', sans-serif; font-size: 3rem; color: #ff0066; margin-bottom: 16px; text-shadow: 0 0 24px rgba(255,0,102,0.18); }
+    .scenario-header p { max-width: 780px; margin: 0 auto 12px; line-height: 1.75; font-size: 1.08rem; }
+    .scenario-header::before { content:''; position:absolute; inset:30px 0 auto 0; height:200px; background: radial-gradient(circle at center, rgba(255,0,102,0.14), transparent 65%); filter: blur(10px); pointer-events:none; z-index:0; }
+    .scenario-header > * { position: relative; z-index: 1; }
+    .scenario-pill { display:inline-block; padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#99ff99; font-weight:700; margin-top:10px; box-shadow: 0 10px 24px rgba(0,0,0,0.12); }
+    .section-card { background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)); border-radius:18px; padding:28px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.10); box-shadow: 0 16px 40px rgba(0,0,0,0.22); position: relative; overflow: hidden; }
+    .section-card::before { content:''; position:absolute; inset:0 auto 0 0; width:5px; background: linear-gradient(180deg, #ff0066, #ffcc66); opacity:0.9; }
+    .section-card > * { position: relative; z-index: 1; }
+    .section-card h2 { font-family: 'Oswald', sans-serif; color: #ffcc99; margin-bottom: 16px; font-size: 1.9rem; }
+    .section-card p { line-height: 1.75; margin-bottom: 14px; }
+    .phrase-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:18px; }
+    .phrase-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease; }
+    .phrase-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.18); box-shadow: 0 14px 28px rgba(0,0,0,0.16); }
+    .phrase-arabic { font-family:'Amiri', serif; font-size:1.8rem; color:#99ff99; margin-bottom:8px; }
+    .phrase-translit { color:#ffcc66; font-style:italic; margin-bottom:8px; }
+    .phrase-meaning { font-weight:700; margin-bottom:10px; }
+    .phrase-meta { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px; }
+    .tag { font-size:0.75rem; padding:4px 10px; border-radius:999px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; }
+    .tag.safe { background: rgba(0, 200, 120, 0.15); color:#99ffcc; }
+    .tag.natural { background: rgba(0, 160, 255, 0.15); color:#aaddff; }
+    .tag.casablanca { background: rgba(255, 120, 0, 0.15); color:#ffd2a6; }
+    .tag.audio-ready { background: rgba(140, 255, 140, 0.12); color:#b8ffb8; }
+    .tag.needs-audio { background: rgba(255, 80, 120, 0.15); color:#ffb5c7; }
+    .audio-btn { background:linear-gradient(45deg, #ff0066, #ff4d88); color:white; border:none; padding:10px 14px; border-radius:999px; font-weight:700; cursor:pointer; margin-right:8px; }
+    .audio-btn.missing { background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#eee; cursor:default; }
+    .phrase-note { margin-top:12px; color:#d7ecff; line-height:1.7; font-size:0.95rem; }
+    .dialogue-list { display:grid; gap:14px; margin-top:18px; }
+    .dialogue-turn { background:rgba(255,255,255,0.05); border-radius:14px; padding:16px 18px; border-left:5px solid #ff0066; transition: transform 0.16s ease, box-shadow 0.16s ease; }
+    .dialogue-turn:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,0,0,0.14); }
+    .dialogue-turn.you { border-left-color:#00d2ff; }
+    .speaker-label { font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; color:#ff99bb; font-weight:700; margin-bottom:8px; }
+    .dialogue-turn.you .speaker-label { color:#9be7ff; }
+    .dialogue-arabic { font-family:'Amiri', serif; font-size:1.7rem; color:#99ff99; margin-bottom:6px; }
+    .dialogue-translit { color:#ffcc66; font-style:italic; margin-bottom:6px; }
+    .dialogue-meaning { margin-bottom:10px; }
+    .contrast-grid { display:grid; gap:14px; margin-top:16px; }
+    .contrast-option { background:rgba(255,255,255,0.05); border-radius:14px; padding:18px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
+    .contrast-option:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+    .contrast-line { font-family:'Amiri', serif; font-size:1.6rem; color:#ffffff; margin:8px 0 4px; }
+    .contrast-translit { color:#ffcc66; font-style:italic; }
+    .contrast-note { margin-top:8px; line-height:1.7; color:#d7ecff; }
+    .challenge-box { background: rgba(255,0,102,0.08); border-left:5px solid #ff0066; border-radius:10px; padding:20px; line-height:1.75; }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+  <div class="breadcrumb"><div class="breadcrumb-container"><a href="index.html">Home</a><span class="breadcrumb-separator">›</span><a href="scenarios.html">Scenarios</a><span class="breadcrumb-separator">›</span><span class="breadcrumb-current">Family Visit & Social Greetings</span></div></div>
+  <main class="scenario-page">
+    <section class="scenario-header">
+      <h1>Family Visit & Social Greetings</h1>
+      <p>
+        This is where Darija stops being purely transactional and starts becoming social. Greetings, politeness, asking how someone is,
+        saying thank you properly, and not sounding like a cardboard cut-out at someone’s house — that’s the point here.
+      </p>
+      <p>
+        You do not need perfect grammar. You need warmth, a few key phrases, and enough rhythm to not freeze when real humans are being nice to you.
+      </p>
+      <div class="scenario-pill">Built from existing greeting / family / politeness audio</div>
+    </section>
+
+    <section class="section-card">
+      <h2>Core phrases</h2>
+      <div class="phrase-grid">
+        <div class="phrase-card" data-audio="audio/salam.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">سلام</div><div class="phrase-translit">salam</div><div class="phrase-meaning">Hello</div><div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">Simple, universal, and never a bad start.</div></div>
+        <div class="phrase-card" data-audio="audio/salam_alikum.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">السلام عليكم</div><div class="phrase-translit">salam alikum</div><div class="phrase-meaning">Peace be upon you</div><div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">A stronger greeting, especially in a more social/family context.</div></div>
+        <div class="phrase-card" data-audio="audio/labas.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">لباس؟</div><div class="phrase-translit">labas?</div><div class="phrase-meaning">How are you?</div><div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">High-frequency and very worth having ready.</div></div>
+        <div class="phrase-card" data-audio="audio/lessons/labas_l_7amdullah.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">لباس، الحمد لله</div><div class="phrase-translit">labas, lhamdullah</div><div class="phrase-meaning">I’m fine, thank God</div><div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">A very normal, safe reply.</div></div>
+        <div class="phrase-card" data-audio="audio/mzyan.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">مزيان</div><div class="phrase-translit">mzyan</div><div class="phrase-meaning">Good / fine</div><div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">The all-purpose word of socially acceptable positivity.</div></div>
+        <div class="phrase-card" data-audio="audio/shukran.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">شكرا</div><div class="phrase-translit">shukran</div><div class="phrase-meaning">Thank you</div><div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">Gratitude is still useful even when your vocabulary collapses.</div></div>
+        <div class="phrase-card" data-audio="audio/lessons/shukran_bzzaf.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">شكرا بزاف</div><div class="phrase-translit">shukran bzzaf</div><div class="phrase-meaning">Thank you very much</div><div class="phrase-meta"><span class="tag natural">natural</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">Warmer and better when someone is being generous.</div></div>
+        <div class="phrase-card" data-audio="audio/baba.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">بابا</div><div class="phrase-translit">baba</div><div class="phrase-meaning">Father / dad</div><div class="phrase-meta"><span class="tag casablanca">family</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">Useful for understanding family references.</div></div>
+        <div class="phrase-card" data-audio="audio/mama.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">ماما</div><div class="phrase-translit">mama</div><div class="phrase-meaning">Mother / mom</div><div class="phrase-meta"><span class="tag casablanca">family</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">Same story — very useful in family contexts.</div></div>
+        <div class="phrase-card" data-audio="audio/khouya.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">خويا</div><div class="phrase-translit">khouya</div><div class="phrase-meaning">My brother / brother</div><div class="phrase-meta"><span class="tag casablanca">family</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">Also useful as a social address term in some contexts.</div></div>
+        <div class="phrase-card" data-audio="audio/khti.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">ختي</div><div class="phrase-translit">khti</div><div class="phrase-meaning">My sister / sister</div><div class="phrase-meta"><span class="tag casablanca">family</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">Useful both literally and socially depending on context.</div></div>
+        <div class="phrase-card" data-audio="audio/dar.mp3"><div class="phrase-arabic" lang="ar" dir="rtl">دار</div><div class="phrase-translit">dar</div><div class="phrase-meaning">House / home</div><div class="phrase-meta"><span class="tag safe">safe</span><span class="tag audio-ready">audio ready</span></div><button class="audio-btn" type="button">▶ Play</button><div class="phrase-note">Useful for family visits, invitations, and social context.</div></div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Mini dialogue</h2>
+      <div class="dialogue-list">
+        <div class="dialogue-turn"><div class="speaker-label">Host</div><div class="dialogue-arabic" lang="ar" dir="rtl">السلام عليكم</div><div class="dialogue-translit">salam alikum</div><div class="dialogue-meaning">Peace be upon you.</div><button class="audio-btn" type="button" data-audio-inline="audio/salam_alikum.mp3">▶ Play</button></div>
+        <div class="dialogue-turn you"><div class="speaker-label">You</div><div class="dialogue-arabic" lang="ar" dir="rtl">وعليكم السلام</div><div class="dialogue-translit">wa 3likum salam</div><div class="dialogue-meaning">And peace be upon you.</div><button class="audio-btn" type="button" data-audio-inline="audio/lessons/wa_3likum_ssalam.mp3">▶ Play</button></div>
+        <div class="dialogue-turn"><div class="speaker-label">Host</div><div class="dialogue-arabic" lang="ar" dir="rtl">لباس؟</div><div class="dialogue-translit">labas?</div><div class="dialogue-meaning">How are you?</div><button class="audio-btn" type="button" data-audio-inline="audio/labas.mp3">▶ Play</button></div>
+        <div class="dialogue-turn you"><div class="speaker-label">You</div><div class="dialogue-arabic" lang="ar" dir="rtl">لباس، الحمد لله</div><div class="dialogue-translit">labas, lhamdullah</div><div class="dialogue-meaning">I’m fine, thank God.</div><button class="audio-btn" type="button" data-audio-inline="audio/lessons/labas_l_7amdullah.mp3">▶ Play</button></div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Natural vs textbook vs socially normal</h2>
+      <div class="contrast-grid">
+        <div class="contrast-option"><span class="tag">textbook</span><div class="contrast-line" lang="ar" dir="rtl">كيف حالك؟</div><div class="contrast-translit">kayfa haluk?</div><div class="contrast-note">Understandable in formal Arabic, but not the natural everyday Darija shape you want here.</div></div>
+        <div class="contrast-option"><span class="tag natural">natural</span><div class="contrast-line" lang="ar" dir="rtl">لباس؟</div><div class="contrast-translit">labas?</div><div class="contrast-note">Short, warm, normal, and very usable.</div></div>
+        <div class="contrast-option"><span class="tag casablanca">social warmth</span><div class="contrast-line" lang="ar" dir="rtl">لباس، الحمد لله</div><div class="contrast-translit">labas, lhamdullah</div><div class="contrast-note">A very normal, socially grounded reply that sounds more human than a bare yes/no answer.</div></div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Quick practice</h2>
+      <div class="challenge-box">
+        <strong>Mini challenge:</strong> You arrive at someone’s home and want to greet them warmly but simply. A very safe mini-sequence is:<br><br>
+        <em>salam alikum ... labas? ... labas, lhamdullah ... shukran bzzaf.</em><br><br>
+        That already gets you a long way toward sounding like a person instead of a phrasebook accident.
+      </div>
+    </section>
+  </main>
+  <footer><p>&copy; 2025 BOERDARIJA. All Rights Reserved.</p></footer>
+  <script src="js/navigation.js"></script>
+  <script>
+    let scenarioAudio = null;
+    document.addEventListener('click', (e) => {
+      const button = e.target.closest('.audio-btn');
+      if (!button || button.classList.contains('missing')) return;
+      const inlineSrc = button.dataset.audioInline;
+      const block = button.closest('[data-audio]');
+      const src = inlineSrc || (block && block.dataset.audio);
+      if (!src) return;
+      if (scenarioAudio) { scenarioAudio.pause(); scenarioAudio.currentTime = 0; }
+      scenarioAudio = new Audio(src);
+      scenarioAudio.play().catch(err => console.error('Audio play failed', err));
+    });
+  </script>
+</body>
+</html>
