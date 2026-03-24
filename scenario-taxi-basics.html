@@ -230,6 +230,15 @@
       border: 1px solid rgba(255, 120, 0, 0.22);
       color: #ffe2bf;
     }
+    .followup-block {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.10);
+      display: none;
+    }
+    .followup-block.visible {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -570,6 +579,15 @@
           <button class="interaction-option" data-correct="false" data-feedback="Polite, but totally the wrong moment. Thanking the driver before giving a destination is the conversational equivalent of exiting before entering.">شكرا</button>
         </div>
         <div class="interaction-feedback" aria-live="polite"></div>
+        <div class="followup-block">
+          <strong>Nice. What might the driver say next?</strong>
+          <div class="interaction-options">
+            <button class="interaction-option" data-correct="true" data-feedback="Exactly. This is a very normal next question once you give a destination.">واش قريب ولا بعيد؟</button>
+            <button class="interaction-option" data-correct="false" data-feedback="Possible in some contexts, but not the most likely immediate next move after you give a destination.">شكرا بزاف</button>
+            <button class="interaction-option" data-correct="false" data-feedback="Too formal and too weird for the scene. Nobody normal is turning a taxi into a grammar recital.">هل تريد الذهاب بسرعة؟</button>
+          </div>
+          <div class="interaction-feedback" aria-live="polite"></div>
+        </div>
       </div>
     </section>
 
@@ -612,12 +630,19 @@
     document.addEventListener('click', (e) => {
       const interactionButton = e.target.closest('.interaction-option');
       if (interactionButton) {
-        const block = interactionButton.closest('.interaction-block');
-        const feedback = block.querySelector('.interaction-feedback');
+        const scope = interactionButton.closest('.followup-block, .interaction-block');
+        const feedback = scope.querySelector(':scope > .interaction-feedback') || scope.querySelector('.interaction-feedback');
         const isCorrect = interactionButton.dataset.correct === 'true';
         const message = interactionButton.dataset.feedback || '';
         feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
         feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        if (isCorrect) {
+          const parentBlock = interactionButton.closest('.interaction-block');
+          const followup = parentBlock && parentBlock.querySelector('.followup-block');
+          if (followup && !interactionButton.closest('.followup-block')) {
+            followup.classList.add('visible');
+          }
+        }
         return;
       }
 
