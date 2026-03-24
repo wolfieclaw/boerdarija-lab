@@ -182,6 +182,54 @@
       padding: 20px;
       line-height: 1.75;
     }
+    .interaction-block {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 14px;
+      padding: 20px;
+      margin-top: 16px;
+    }
+    .interaction-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .interaction-option {
+      text-align: left;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 14px 16px;
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+      font-weight: 600;
+    }
+    .interaction-option:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.22);
+      background: rgba(255,255,255,0.12);
+    }
+    .interaction-feedback {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      line-height: 1.7;
+      display: none;
+    }
+    .interaction-feedback.good {
+      display: block;
+      background: rgba(0, 200, 120, 0.12);
+      border: 1px solid rgba(0, 200, 120, 0.22);
+      color: #bfffdc;
+    }
+    .interaction-feedback.bad {
+      display: block;
+      background: rgba(255, 120, 0, 0.12);
+      border: 1px solid rgba(255, 120, 0, 0.22);
+      color: #ffe2bf;
+    }
   </style>
 </head>
 <body>
@@ -511,6 +559,21 @@
     </section>
 
     <section class="section-card">
+      <h2>Try a tiny interaction</h2>
+      <p>This is the kind of lightweight interaction that could make the whole site feel more alive without turning it into a bloated app.</p>
+      <div class="interaction-block" data-interaction="taxi-natural-choice">
+        <strong>Driver says:</strong> <em>l-fin?</em><br>
+        <strong>What is the best everyday reply?</strong>
+        <div class="interaction-options">
+          <button class="interaction-option" data-correct="false" data-feedback="Understood by a formal-Arabic angel, but too stiff and classroom-shaped for a normal taxi exchange.">أريد الذهاب إلى المعاريف</button>
+          <button class="interaction-option" data-correct="true" data-feedback="Yes — this is the best everyday option: normal, practical, and easy to use under mild panic.">بغيت نمشي للمعاريف</button>
+          <button class="interaction-option" data-correct="false" data-feedback="Polite, but completely the wrong move at this point in the conversation unless your plan is to thank the driver before going anywhere.">شكرا</button>
+        </div>
+        <div class="interaction-feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section-card">
       <h2>Quick practice</h2>
       <div class="challenge-box">
         <strong>Mini challenge:</strong> imagine the driver asks <em>"l-fin?"</em> What would you say if you wanted to go to Maarif and then stop near a café?<br><br>
@@ -530,6 +593,17 @@
     let scenarioAudio = null;
 
     document.addEventListener('click', (e) => {
+      const interactionButton = e.target.closest('.interaction-option');
+      if (interactionButton) {
+        const block = interactionButton.closest('.interaction-block');
+        const feedback = block.querySelector('.interaction-feedback');
+        const isCorrect = interactionButton.dataset.correct === 'true';
+        const message = interactionButton.dataset.feedback || '';
+        feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
+        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}`;
+        return;
+      }
+
       const button = e.target.closest('.audio-btn');
       if (!button || button.classList.contains('missing')) return;
 
