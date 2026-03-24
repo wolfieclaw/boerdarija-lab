@@ -88,6 +88,63 @@
             transform: translateY(-2px);
             opacity: 0.96;
         }
+        .path-grid {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .path-card {
+            background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+            border: 1px solid rgba(255,255,255,0.10);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+            border-radius: 18px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+        .path-card::before {
+            content: '';
+            position: absolute;
+            inset: 0 auto 0 0;
+            width: 5px;
+            background: linear-gradient(180deg, #00d2ff, #ffcc66);
+            opacity: 0.9;
+        }
+        .path-card h3 {
+            font-family: 'Oswald', sans-serif;
+            color: #ffcc99;
+            font-size: 1.7rem;
+            margin-bottom: 10px;
+        }
+        .path-card p {
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+        .path-card ol {
+            margin: 0 0 16px 18px;
+            line-height: 1.8;
+            color: #e9f3ff;
+        }
+        .path-card a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            font-weight: 700;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: transform 0.16s ease, opacity 0.16s ease;
+        }
+        .path-card a:hover {
+            transform: translateY(-2px);
+            opacity: 0.96;
+        }
         .feature-card {
             background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
             border: 1px solid rgba(255,255,255,0.10);
@@ -144,6 +201,48 @@
                 <a href="natural-vs-textbook-vs-slang.html">Natural vs Textbook vs Slang</a>
                 <a href="slang.html">Slang & Street-Level Darija</a>
             </div>
+        </div>
+    </section>
+
+    <section class="featured-strip">
+        <div class="featured-panel">
+            <h2>Start here</h2>
+            <p>
+                If you’re not sure where to begin, don’t wander randomly. Pick the path that matches what you actually need most right now.
+            </p>
+        </div>
+    </section>
+
+    <section class="path-grid">
+        <div class="path-card">
+            <h3>Path 1 — Survival first</h3>
+            <p>Best if you want to function better in daily Casablanca life as fast as possible.</p>
+            <ol>
+                <li>Taxi Basics</li>
+                <li>Café Ordering</li>
+                <li>Market Bargaining</li>
+            </ol>
+            <a href="scenario-taxi-basics.html">Start Survival Path</a>
+        </div>
+        <div class="path-card">
+            <h3>Path 2 — Social first</h3>
+            <p>Best if your main pain is greeting people, visiting homes, replying warmly, and not freezing socially.</p>
+            <ol>
+                <li>Family Visit & Social Greetings</li>
+                <li>WhatsApp & Texting Style</li>
+                <li>Natural vs Textbook vs Slang</li>
+            </ol>
+            <a href="scenario-family-social.html">Start Social Path</a>
+        </div>
+        <div class="path-card">
+            <h3>Path 3 — Sound more human</h3>
+            <p>Best if you already know some basics and want to stop sounding too formal, stiff, or translated.</p>
+            <ol>
+                <li>Natural vs Textbook vs Slang</li>
+                <li>Slang & Street-Level Darija</li>
+                <li>WhatsApp & Texting Style</li>
+            </ol>
+            <a href="natural-vs-textbook-vs-slang.html">Start Human Path</a>
         </div>
     </section>
 
