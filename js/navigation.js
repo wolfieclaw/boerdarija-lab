@@ -60,6 +60,10 @@
         currentPage.startsWith('lesson')) {
         activeLink = document.querySelector('.nav-links a[href="courses.html"]');
       }
+      // Check for scenarios
+      else if (currentPage === 'scenarios.html' || currentPage.startsWith('scenario-')) {
+        activeLink = document.querySelector('.nav-links a[href="scenarios.html"]');
+      }
       // Check for vocabulary game
       else if (currentPage === 'vocabulary-game.html') {
         activeLink = document.querySelector('.nav-links a[href="vocabulary-game.html"]');
