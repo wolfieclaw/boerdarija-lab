@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BOERDARIJA | Natural vs Textbook vs Slang</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" href="favicon.ico">
+  <style>
+    .feature-page { max-width: 1100px; margin: 0 auto; padding: 110px 20px 60px; }
+    .feature-header { text-align:center; margin-bottom:40px; position:relative; }
+    .feature-header::before { content:''; position:absolute; inset:30px 0 auto 0; height:210px; background: radial-gradient(circle at center, rgba(255,0,102,0.14), transparent 65%); filter: blur(10px); pointer-events:none; z-index:0; }
+    .feature-header > * { position:relative; z-index:1; }
+    .feature-header h1 { font-family:'Oswald', sans-serif; font-size:3rem; color:#ff0066; margin-bottom:16px; text-shadow:0 0 24px rgba(255,0,102,0.18); }
+    .feature-header p { max-width:800px; margin:0 auto 12px; line-height:1.75; font-size:1.08rem; }
+    .feature-pill { display:inline-block; padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#99ff99; font-weight:700; margin-top:10px; box-shadow:0 10px 24px rgba(0,0,0,0.12); }
+    .section-card { background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)); border-radius:18px; padding:28px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.10); box-shadow: 0 16px 40px rgba(0,0,0,0.22); position:relative; overflow:hidden; }
+    .section-card::before { content:''; position:absolute; inset:0 auto 0 0; width:5px; background: linear-gradient(180deg, #ff0066, #ffcc66); opacity:0.9; }
+    .section-card > * { position:relative; z-index:1; }
+    .section-card h2 { font-family:'Oswald', sans-serif; color:#ffcc99; margin-bottom:16px; font-size:1.9rem; }
+    .section-card p { line-height:1.75; margin-bottom:14px; }
+    .comparison-group { display:grid; gap:14px; margin-top:18px; }
+    .comparison-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
+    .comparison-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+    .label-row { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+    .tag { font-size:0.75rem; padding:4px 10px; border-radius:999px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; }
+    .tag.textbook { background: rgba(120,120,255,0.16); color:#c9d3ff; }
+    .tag.natural { background: rgba(0,160,255,0.15); color:#aaddff; }
+    .tag.slang { background: rgba(255,120,0,0.15); color:#ffd2a6; }
+    .tag.safe { background: rgba(0,200,120,0.15); color:#99ffcc; }
+    .line-arabic { font-family:'Amiri', serif; font-size:1.8rem; color:#99ff99; margin-bottom:6px; }
+    .line-translit { color:#ffcc66; font-style:italic; margin-bottom:6px; }
+    .line-meaning { font-weight:700; margin-bottom:8px; }
+    .line-note { color:#d7ecff; line-height:1.7; }
+  </style>
+</head>
+<body>
+  <div id="nav-placeholder"></div>
+  <div class="breadcrumb"><div class="breadcrumb-container"><a href="index.html">Home</a><span class="breadcrumb-separator">›</span><span class="breadcrumb-current">Natural vs Textbook vs Slang</span></div></div>
+  <main class="feature-page">
+    <section class="feature-header">
+      <h1>Natural vs Textbook vs Slang</h1>
+      <p>
+        This is one of the most important ideas in BoerDarija Lab: not just teaching what a phrase means, but how it actually sounds in real life.
+      </p>
+      <p>
+        A phrase can be correct and still sound stiff. Another phrase can be short, normal, and much better for daily Casablanca use. This page shows that difference.
+      </p>
+      <div class="feature-pill">A core product feature, not just a side note</div>
+    </section>
+
+    <section class="section-card">
+      <h2>Why this matters</h2>
+      <p>
+        Most language sites stop at translation. But real learners want to know: can I really say this? Will I sound weird? Is this too formal? Too slangy? Too much?
+      </p>
+      <p>
+        This feature is where BoerDarija Lab can become genuinely distinctive.
+      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>Example: asking where someone is</h2>
+      <div class="comparison-group">
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag textbook">textbook</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">أين أنت؟</div>
+          <div class="line-translit">ayna anta?</div>
+          <div class="line-meaning">Where are you?</div>
+          <div class="line-note">Understandable, but too formal / MSA-like for a normal WhatsApp message.</div>
+        </div>
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag natural">natural</span><span class="tag safe">safe</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">فينك؟</div>
+          <div class="line-translit">fink?</div>
+          <div class="line-meaning">Where are you?</div>
+          <div class="line-note">Short, useful, normal. This is the version you want first.</div>
+        </div>
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag slang">clipped / pointed</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">فينيك دابا؟</div>
+          <div class="line-translit">finik daba?</div>
+          <div class="line-meaning">Where are you now?</div>
+          <div class="line-note">A little more immediate, a little more pointed depending on tone.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Example: ordering tea</h2>
+      <div class="comparison-group">
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag textbook">textbook</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">أريد شايا من فضلك</div>
+          <div class="line-translit">urid shayan min fadlik</div>
+          <div class="line-meaning">I would like tea, please.</div>
+          <div class="line-note">Understandable in a formal/classroom way, but not café-natural.</div>
+        </div>
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag natural">natural</span><span class="tag safe">safe</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">بغيت أتاي، عفاك</div>
+          <div class="line-translit">bghit atay, 3afak</div>
+          <div class="line-meaning">I want tea, please.</div>
+          <div class="line-note">Simple, practical, and exactly what you want for real life.</div>
+        </div>
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag slang">clipped</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">أتاي، عفاك</div>
+          <div class="line-translit">atay, 3afak</div>
+          <div class="line-meaning">Tea, please.</div>
+          <div class="line-note">Very usable once you’re comfortable. Shorter and more casual.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Example: reacting to a market price</h2>
+      <div class="comparison-group">
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag textbook">textbook</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">هذا الثمن مرتفع</div>
+          <div class="line-translit">hadha ath-thaman مرتafi3</div>
+          <div class="line-meaning">This price is high.</div>
+          <div class="line-note">Not wrong, just not how you want to sound in a market.</div>
+        </div>
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag natural">natural</span><span class="tag safe">safe</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">غالي بزاف</div>
+          <div class="line-translit">ghali bzzaf</div>
+          <div class="line-meaning">Very expensive.</div>
+          <div class="line-note">Short, natural, and highly usable.</div>
+        </div>
+        <div class="comparison-card">
+          <div class="label-row"><span class="tag slang">bargaining energy</span></div>
+          <div class="line-arabic" lang="ar" dir="rtl">نقّص شوية</div>
+          <div class="line-translit">neqqs shwiya</div>
+          <div class="line-meaning">Lower it a bit.</div>
+          <div class="line-note">More active / pushy. Good later, once you’re comfortable engaging.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><p>&copy; 2025 BOERDARIJA. All Rights Reserved.</p></footer>
+  <script src="js/navigation.js"></script>
+</body>
+</html>
