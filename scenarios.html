@@ -14,7 +14,19 @@
       text-align: center;
       max-width: 1000px;
       margin: 0 auto;
+      position: relative;
     }
+     .scenarios-hero::before {
+      content: '';
+      position: absolute;
+      inset: 40px 0 auto 0;
+      height: 220px;
+      background: radial-gradient(circle at center, rgba(255, 0, 102, 0.16), transparent 65%);
+      filter: blur(10px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .scenarios-hero > * { position: relative; z-index: 1; }
     .scenarios-hero h1 {
       font-size: 3rem;
       margin-bottom: 20px;
@@ -46,14 +58,30 @@
       gap: 24px;
     }
     .scenario-card {
-      background: rgba(0,0,0,0.28);
-      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border-radius: 18px;
       padding: 28px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.10);
       display: flex;
       flex-direction: column;
       gap: 14px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .scenario-card::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 5px;
+      background: linear-gradient(180deg, #ff0066, #ffcc66);
+      opacity: 0.9;
+    }
+    .scenario-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 46px rgba(0,0,0,0.28);
+      border-color: rgba(255,255,255,0.18);
     }
     .scenario-card h2 {
       color: #ffcc99;
@@ -95,6 +123,12 @@
       border-radius: 999px;
       text-decoration: none;
       font-weight: 700;
+      transition: transform 0.15s ease, opacity 0.15s ease;
+    }
+     .scenario-actions a:hover,
+     .scenario-actions span:hover {
+      transform: translateY(-1px);
+      opacity: 0.96;
     }
     .scenario-actions a {
       background: linear-gradient(45deg, #ff0066, #ff4d88);
