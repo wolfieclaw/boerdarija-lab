@@ -54,6 +54,15 @@
     .contrast-translit { color:#ffcc66; font-style:italic; }
     .contrast-note { margin-top:8px; line-height:1.7; color:#d7ecff; }
     .challenge-box { background: rgba(255,0,102,0.08); border-left:5px solid #ff0066; border-radius:10px; padding:20px; line-height:1.75; }
+
+    .next-steps-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:18px; }
+    .next-step-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
+    .next-step-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+    .next-step-card h3 { font-family:'Oswald', sans-serif; color:#ffcc99; font-size:1.5rem; margin-bottom:8px; }
+    .next-step-card p { line-height:1.7; margin-bottom:14px; }
+    .next-step-card a { display:inline-flex; align-items:center; justify-content:center; padding:12px 18px; border-radius:999px; text-decoration:none; font-weight:700; background: rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.12); transition: transform 0.16s ease, opacity 0.16s ease; }
+    .next-step-card a:hover { transform: translateY(-1px); opacity:0.96; }
+
   </style>
 </head>
 <body>
@@ -256,6 +265,23 @@
         Again: not trying to sound like a scholar. Trying to sound functional, calm, and like someone who belongs in a café chair.
       </div>
     </section>
+  
+    <section class="section-card">
+      <h2>Where to go next</h2>
+      <div class="next-steps-grid">
+        <div class="next-step-card">
+          <h3>Market Bargaining</h3>
+          <p>Once food and drink feel easier, markets are the next useful place to build confidence.</p>
+          <a href="scenario-market-bargaining.html">Go to Market Bargaining</a>
+        </div>
+        <div class="next-step-card">
+          <h3>Taxi Basics</h3>
+          <p>Want another practical situation with immediate payoff?</p>
+          <a href="scenario-taxi-basics.html">Go to Taxi Basics</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
