@@ -2041,3 +2041,37 @@ footer {
   margin-top: 30px;
   border-radius: 0 10px 10px 0;
 }
+
+/* Shared action language */
+.btn-action-primary, .scenario-actions a, .next-step-card a, .next-link, .path-card > a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  background: linear-gradient(45deg, #ff0066, #ff4d88);
+  color: #fff !important;
+  box-shadow: 0 6px 18px rgba(255, 0, 102, 0.28);
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-action-primary:hover, .scenario-actions a:hover, .next-step-card a:hover, .next-link:hover, .path-card > a:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
+  box-shadow: 0 8px 22px rgba(255, 0, 102, 0.34);
+}
+
+.btn-action-secondary, .scenario-actions span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  background: rgba(255,255,255,0.08);
+  color: #d7ecff;
+  border: 1px solid rgba(255,255,255,0.12);
+}
