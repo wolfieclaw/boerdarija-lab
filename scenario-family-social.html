@@ -301,7 +301,7 @@
         allOptions.forEach(btn => btn.classList.remove('correct-choice', 'wrong-choice'));
         interactionButton.classList.add(isCorrect ? 'correct-choice' : 'wrong-choice');
         feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
-        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}${isCorrect ? '<div class="interaction-payoff">Good — you'd handle this fine in real life.</div>' : ''}`;
+        feedback.innerHTML = `<strong>${isCorrect ? 'Good choice.' : 'Not the best choice.'}</strong> ${message}${isCorrect ? '<div class="interaction-payoff">Good — you would handle this fine in real life.</div>' : ''}`;
         if (isCorrect) {
           const parentBlock = interactionButton.closest('.interaction-block');
           const followup = parentBlock && parentBlock.querySelector('.followup-block');
