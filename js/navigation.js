@@ -10,6 +10,7 @@
       try {
         window.jQuery('#nav-placeholder').load('nav.html', function () {
           attachScrollEffect();
+          attachMobileNavToggle();
           updateNavHeightVar();
           normalizeBreadcrumbSeparators();
           setActiveNavLink();
@@ -30,6 +31,7 @@
           placeholder.innerHTML = html;
         }
         attachScrollEffect();
+        attachMobileNavToggle();
         updateNavHeightVar();
         normalizeBreadcrumbSeparators();
         setActiveNavLink();
@@ -144,6 +146,33 @@
       seps.forEach(function (sep) { sep.textContent = BREADCRUMB_SEPARATOR; sep.setAttribute('aria-hidden', 'true'); });
     } catch (e) {
       // no-op
+    }
+  }
+
+  function attachMobileNavToggle() {
+    try {
+      var nav = document.querySelector('nav');
+      var toggle = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (!nav || !toggle || !links) return;
+      if (toggle.dataset.bound === 'true') return;
+      toggle.dataset.bound = 'true';
+
+      toggle.addEventListener('click', function () {
+        var open = nav.classList.toggle('mobile-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        updateNavHeightVar();
+      });
+
+      links.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('mobile-open');
+          toggle.setAttribute('aria-expanded', 'false');
+          updateNavHeightVar();
+        });
+      });
+    } catch (e) {
+      console.warn('Failed to attach mobile nav toggle:', e);
     }
   }
 
