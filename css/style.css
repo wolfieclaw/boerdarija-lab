@@ -2044,23 +2044,24 @@ footer {
 
 /* Shared action language */
 .btn-action-primary, .scenario-actions a, .next-step-card a, .next-link, .path-card > a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 18px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  background: linear-gradient(45deg, #ff0066, #ff4d88);
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 12px 18px !important;
+  border-radius: 999px !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  background: linear-gradient(45deg, #ff0066, #ff4d88) !important;
   color: #fff !important;
-  box-shadow: 0 6px 18px rgba(255, 0, 102, 0.28);
-  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+  border: none !important;
+  box-shadow: 0 6px 18px rgba(255, 0, 102, 0.28) !important;
+  transition: transform 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease !important;
 }
 
 .btn-action-primary:hover, .scenario-actions a:hover, .next-step-card a:hover, .next-link:hover, .path-card > a:hover {
   transform: translateY(-1px);
   opacity: 0.95;
-  box-shadow: 0 8px 22px rgba(255, 0, 102, 0.34);
+  box-shadow: 0 8px 22px rgba(255, 0, 102, 0.34) !important;
 }
 
 .btn-action-secondary, .scenario-actions span {
@@ -2078,29 +2079,29 @@ footer {
 
 
 .btn-utility, .audio-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 14px;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 700;
-  background: rgba(255,255,255,0.10);
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 10px 14px !important;
+  border-radius: 999px !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  background: rgba(255,255,255,0.10) !important;
   color: #fff !important;
-  border: 1px solid rgba(255,255,255,0.16);
-  box-shadow: none;
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+  border: 1px solid rgba(255,255,255,0.16) !important;
+  box-shadow: none !important;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease !important;
 }
 
 .btn-utility:hover, .audio-btn:hover {
   transform: translateY(-1px);
-  background: rgba(255,255,255,0.14);
-  border-color: rgba(255,255,255,0.24);
+  background: rgba(255,255,255,0.14) !important;
+  border-color: rgba(255,255,255,0.24) !important;
   opacity: 1;
 }
 
 .audio-btn.missing, .btn-utility.muted {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.06) !important;
   color: #d7ecff !important;
-  border: 1px solid rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.10) !important;
 }
