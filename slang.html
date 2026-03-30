@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BOERDARIJA | Slang & Street-Level Darija</title>
+  <title>BOERDARIJA | Street-Level Darija</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -14,16 +14,16 @@
     .feature-header::before { content:''; position:absolute; inset:30px 0 auto 0; height:210px; background: radial-gradient(circle at center, rgba(255,140,0,0.14), transparent 65%); filter: blur(10px); pointer-events:none; z-index:0; }
     .feature-header > * { position:relative; z-index:1; }
     .feature-header h1 { font-family:'Oswald', sans-serif; font-size:3rem; color:#ff8c00; margin-bottom:16px; text-shadow:0 0 24px rgba(255,140,0,0.18); }
-    .feature-header p { max-width:800px; margin:0 auto 12px; line-height:1.75; font-size:1.08rem; }
+    .feature-header p { max-width:820px; margin:0 auto 12px; line-height:1.75; font-size:1.08rem; }
     .feature-pill { display:inline-block; padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#ffd2a6; font-weight:700; margin-top:10px; box-shadow:0 10px 24px rgba(0,0,0,0.12); }
     .section-card { background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)); border-radius:18px; padding:28px; margin-bottom:26px; border:1px solid rgba(255,255,255,0.10); box-shadow: 0 16px 40px rgba(0,0,0,0.22); position:relative; overflow:hidden; }
     .section-card::before { content:''; position:absolute; inset:0 auto 0 0; width:5px; background: linear-gradient(180deg, #ff8c00, #ffcc66); opacity:0.9; }
     .section-card > * { position:relative; z-index:1; }
     .section-card h2 { font-family:'Oswald', sans-serif; color:#ffcc99; margin-bottom:16px; font-size:1.9rem; }
     .section-card p { line-height:1.75; margin-bottom:14px; }
-    .slang-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:18px; }
-    .slang-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
-    .slang-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
+    .slang-grid, .track-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px; margin-top:18px; }
+    .slang-card, .track-card { background:rgba(255,255,255,0.05); border-radius:16px; padding:20px; border:1px solid rgba(255,255,255,0.08); transition: transform 0.16s ease, border-color 0.16s ease; }
+    .slang-card:hover, .track-card:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.18); }
     .slang-arabic { font-family:'Amiri', serif; font-size:1.8rem; color:#99ff99; margin-bottom:6px; }
     .slang-translit { color:#ffcc66; font-style:italic; margin-bottom:6px; }
     .slang-meaning { font-weight:700; margin-bottom:8px; }
@@ -33,96 +33,198 @@
     .tag.casablanca { background: rgba(255, 120, 0, 0.15); color:#ffd2a6; }
     .tag.playful { background: rgba(255, 0, 102, 0.15); color:#ffb5c7; }
     .tag.caution { background: rgba(255, 80, 80, 0.15); color:#ffb3b3; }
+    .tag.listen { background: rgba(0, 160, 255, 0.15); color:#aaddff; }
     .slang-note { color:#d7ecff; line-height:1.7; }
+    .rule-box { background: rgba(255,255,255,0.05); border-radius: 16px; padding: 18px 20px; border:1px solid rgba(255,255,255,0.08); margin-top:14px; }
+    .interaction-block { background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.04)); border:1px solid rgba(255,255,255,0.12); border-radius:18px; padding:22px; margin-top:18px; box-shadow: 0 12px 32px rgba(0,0,0,0.16); }
+    .interaction-kicker { display:inline-flex; align-items:center; gap:8px; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.08em; color:#ffd1e3; background:rgba(255,140,0,0.14); border:1px solid rgba(255,140,0,0.18); border-radius:999px; padding:6px 10px; margin-bottom:12px; }
+    .interaction-question { font-size:1.02rem; line-height:1.7; margin-bottom:10px; }
+    .interaction-options { display:flex; flex-direction:column; gap:12px; margin-top:14px; }
+    .interaction-option { text-align:left; background:rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.12); border-radius:14px; padding:15px 16px; cursor:pointer; font-weight:600; }
+    .interaction-feedback { margin-top:16px; padding:15px 16px; border-radius:14px; line-height:1.7; display:none; }
+    .interaction-feedback.good { display:block; background: rgba(0, 200, 120, 0.12); border:1px solid rgba(0, 200, 120, 0.24); color:#bfffdc; }
+    .interaction-feedback.bad { display:block; background: rgba(255, 120, 0, 0.12); border:1px solid rgba(255, 120, 0, 0.24); color:#ffe2bf; }
   </style>
 </head>
 <body>
   <div id="nav-placeholder"></div>
-  <div class="breadcrumb"><div class="breadcrumb-container"><a href="index.html">Home</a><span class="breadcrumb-separator">›</span><span class="breadcrumb-current">Slang & Street-Level Darija</span></div></div>
+  <div class="breadcrumb"><div class="breadcrumb-container"><a href="index.html">Home</a><span class="breadcrumb-separator">›</span><span class="breadcrumb-current">Street-Level Darija</span></div></div>
   <main class="feature-page">
     <section class="feature-header">
-      <h1>Slang & Street-Level Darija</h1>
+      <h1>Street-Level Darija</h1>
       <p>
-        Slang is where the language starts sounding alive — but also where learners can get themselves into trouble fastest.
+        This page is not here to make you sound instantly cool. It is here to help you hear real Casablanca casual speech, stop sounding stiff, and avoid sounding try-hard when the language gets more street-level.
       </p>
       <p>
-        The goal here is not to turn you into a performative slang goblin. It’s to help you recognize common casual speech, understand tone, and know what is safe to borrow versus what should stay in your passive understanding for now.
+        Some forms are safe to use. Some are safer to understand first. That distinction is the whole point.
       </p>
-      <div class="feature-pill">Understand it first. Use it carefully later.</div>
+      <div class="feature-pill">What you’ll hear in Casablanca, what’s safe to use, and what to hold back for now</div>
     </section>
 
     <section class="section-card">
-      <h2>How to use this page</h2>
+      <h2>What this page is really for</h2>
       <p>
-        A lot of slang is useful to <strong>understand</strong> before it is useful to <strong>say</strong>. Some expressions are harmless and warm. Others depend heavily on tone, age, social context, or how well people know you.
+        Casablanca speech is often shorter, faster, more implied, and more casual than textbook Darija. That does not mean you should imitate everything immediately.
       </p>
       <p>
-        So the default rule is simple: if something is marked as more casual or playful, great — learn to hear it. Use it later, once it feels natural rather than costume-y.
+        The real beginner win here is: <strong>recognize more, sound less stiff, and avoid forcing slang before your ear is ready.</strong>
       </p>
     </section>
 
     <section class="section-card">
-      <h2>Starter slang / casual expressions</h2>
+      <h2>Safe casual forms you can actually use</h2>
       <div class="slang-grid">
         <div class="slang-card">
-          <div class="tag-row"><span class="tag safe">safe-ish</span><span class="tag casablanca">casual</span></div>
+          <div class="tag-row"><span class="tag safe">safe to use</span><span class="tag casablanca">common</span></div>
           <div class="slang-arabic" lang="ar" dir="rtl">واخا</div>
           <div class="slang-translit">wakha</div>
           <div class="slang-meaning">okay / fine / agreed</div>
-          <div class="slang-note">Very common and useful. One of the first casual words worth recognizing and eventually using.</div>
+          <div class="slang-note">Very common, very useful, and one of the easiest casual words to start recognizing and using naturally.</div>
         </div>
         <div class="slang-card">
-          <div class="tag-row"><span class="tag safe">safe-ish</span><span class="tag playful">casual reaction</span></div>
-          <div class="slang-arabic" lang="ar" dir="rtl">آه صافي</div>
-          <div class="slang-translit">ah, safi</div>
-          <div class="slang-meaning">ah okay / alright / got it</div>
-          <div class="slang-note">Very common conversational softener and reaction marker.</div>
-        </div>
-        <div class="slang-card">
-          <div class="tag-row"><span class="tag safe">safe-ish</span><span class="tag casablanca">high-frequency</span></div>
+          <div class="tag-row"><span class="tag safe">safe to use</span><span class="tag casablanca">high-frequency</span></div>
           <div class="slang-arabic" lang="ar" dir="rtl">دابا</div>
           <div class="slang-translit">daba</div>
           <div class="slang-meaning">now</div>
-          <div class="slang-note">Not rude, not edgy — just very normal real-life Darija rhythm.</div>
+          <div class="slang-note">Not edgy, not rough — just real-life Darija rhythm. You will hear it constantly.</div>
         </div>
         <div class="slang-card">
-          <div class="tag-row"><span class="tag safe">listen first</span><span class="tag playful">reaction</span></div>
-          <div class="slang-arabic" lang="ar" dir="rtl">آش هاد الشي؟</div>
-          <div class="slang-translit">ash had shi?</div>
-          <div class="slang-meaning">what is this? / what’s going on here?</div>
-          <div class="slang-note">Can be curious, amused, or annoyed depending on tone. Very worth understanding.</div>
-        </div>
-        <div class="slang-card">
-          <div class="tag-row"><span class="tag safe">listen first</span><span class="tag playful">social</span></div>
-          <div class="slang-arabic" lang="ar" dir="rtl">زوين</div>
-          <div class="slang-translit">zwin</div>
-          <div class="slang-meaning">nice / pretty / good</div>
-          <div class="slang-note">Useful and common, but tone matters a lot depending on what or who you’re describing.</div>
-        </div>
-        <div class="slang-card">
-          <div class="tag-row"><span class="tag caution">context matters</span><span class="tag playful">too easy to misuse</span></div>
-          <div class="slang-arabic" lang="ar" dir="rtl">عافاك</div>
-          <div class="slang-translit">3afak</div>
-          <div class="slang-meaning">please</div>
-          <div class="slang-note">Not slang exactly, but a good example of how something simple can sound warm, blunt, or overused depending on delivery.</div>
+          <div class="tag-row"><span class="tag safe">safe to use</span><span class="tag playful">soft reaction</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">آه صافي</div>
+          <div class="slang-translit">ah, safi</div>
+          <div class="slang-meaning">ah okay / alright / got it</div>
+          <div class="slang-note">A very natural conversational softener and reaction marker.</div>
         </div>
       </div>
     </section>
 
     <section class="section-card">
-      <h2>Rules of thumb</h2>
+      <h2>Safe to understand first</h2>
+      <div class="slang-grid">
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag listen">safe to understand</span><span class="tag playful">tone matters</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">آش هاد الشي؟</div>
+          <div class="slang-translit">ash had shi?</div>
+          <div class="slang-meaning">what is this? / what’s going on here?</div>
+          <div class="slang-note">Can sound amused, surprised, irritated, or playful depending on delivery. Very useful to recognize before you start using it casually.</div>
+        </div>
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag listen">safe to understand</span><span class="tag caution">use carefully</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">زوين</div>
+          <div class="slang-translit">zwin</div>
+          <div class="slang-meaning">nice / good / pretty</div>
+          <div class="slang-note">Very common, but the social meaning shifts depending on whether you’re describing food, a place, a thing, or a person.</div>
+        </div>
+        <div class="slang-card">
+          <div class="tag-row"><span class="tag listen">safe to understand</span><span class="tag caution">not your first default</span></div>
+          <div class="slang-arabic" lang="ar" dir="rtl">عافاك</div>
+          <div class="slang-translit">3afak</div>
+          <div class="slang-meaning">please</div>
+          <div class="slang-note">Not slang exactly, but a good example of how a normal word can sound warm, blunt, soft, or overused depending on rhythm and tone.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Same meaning, different social temperature</h2>
+      <div class="track-grid">
+        <div class="track-card">
+          <h3>Where are you?</h3>
+          <p><strong>Neutral / safer:</strong> <em>fink?</em></p>
+          <p><strong>More pointed:</strong> <em>finik daba?</em></p>
+          <p class="slang-note">Same basic idea, but the second one carries more pressure and immediacy.</p>
+        </div>
+        <div class="track-card">
+          <h3>I’m coming</h3>
+          <p><strong>Safe casual:</strong> <em>ana jay</em></p>
+          <p><strong>More loaded in real life:</strong> the phrase often implies “I am on my way socially,” not always literally.</p>
+          <p class="slang-note">Street-level rhythm often compresses reality as much as language.</p>
+        </div>
+        <div class="track-card">
+          <h3>That’s expensive</h3>
+          <p><strong>Safe market reaction:</strong> <em>ghali bzzaf</em></p>
+          <p><strong>Stronger bargaining energy:</strong> <em>neqqs shwiya</em></p>
+          <p class="slang-note">The second one shifts you from reacting to pushing back. That changes the energy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Better in text than in speech</h2>
       <p>
-        <strong>Use freely:</strong> casual high-frequency words that are normal and safe, like <em>wakha</em> or <em>daba</em>.
+        Some things feel normal in WhatsApp because texting naturally tolerates more clipping, more shorthand, and more implied tone.
       </p>
+      <div class="rule-box">
+        <strong>Examples:</strong><br><br>
+        - quick location/status phrases can feel very normal in chat, but more abrupt in speech<br>
+        - clipped replies are often softer in text than out loud<br>
+        - some “streety” forms feel playful in messages and try-hard in person
+      </div>
       <p>
-        <strong>Use carefully:</strong> socially loaded words, reactions, compliments, and anything that depends on tone or relationship.
+        That’s why this page belongs next to the WhatsApp page, not far away from it.
       </p>
-      <p>
-        <strong>Mostly understand first:</strong> harder slang, jokey phrases, and things that might sound brilliant in one mouth and ridiculous in another.
-      </p>
+    </section>
+
+    <section class="section-card">
+      <h2>How to avoid sounding try-hard</h2>
+      <div class="rule-box">
+        <strong>Better slightly normal than aggressively fake.</strong><br><br>
+        - don’t stack slang into every sentence<br>
+        - don’t jump too far ahead of your ear<br>
+        - one casual form is better than five forced ones<br>
+        - understanding comes before stylish use<br>
+        - if you are unsure, stay a little safer
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Try a tiny recognition drill</h2>
+      <div class="interaction-block">
+        <div class="interaction-kicker">Recognition first</div>
+        <div class="interaction-question"><strong>Which option is safest for a beginner to use casually?</strong></div>
+        <div class="interaction-options">
+          <button class="interaction-option" data-feedback="Yes — this is a very normal casual response and a good beginner-friendly street-level item." data-correct="true">واخا</button>
+          <button class="interaction-option" data-feedback="Very useful to understand, but too tone-dependent to be your first casual flex." data-correct="false">آش هاد الشي؟</button>
+          <button class="interaction-option" data-feedback="Important word, but exactly the kind of thing beginners often overuse without hearing the tone properly." data-correct="false">عافاك</button>
+        </div>
+        <div class="interaction-feedback" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section-card">
+      <h2>Where to go next</h2>
+      <div class="track-grid">
+        <div class="track-card">
+          <h3>Safer foundation</h3>
+          <p>If you want the safer baseline before the edge, go back to the main comparison page.</p>
+          <a class="btn-action-primary" href="natural-vs-textbook-vs-slang.html">Go to Natural vs Textbook vs Slang</a>
+        </div>
+        <div class="track-card">
+          <h3>See it in modern life</h3>
+          <p>WhatsApp shows how this same casual/street-level rhythm actually appears in messages.</p>
+          <a class="btn-action-primary" href="scenario-whatsapp-texting.html">Go to WhatsApp</a>
+        </div>
+        <div class="track-card">
+          <h3>Shift back to warmth</h3>
+          <p>Not all real Darija is streety — some of the next useful layer is warmth and hospitality.</p>
+          <a class="btn-action-primary" href="scenario-family-social.html">Go to Family / Social</a>
+        </div>
+      </div>
     </section>
   </main>
   <footer><p>&copy; 2025 BOERDARIJA. All Rights Reserved.</p></footer>
   <script src="js/navigation.js"></script>
+  <script>
+    document.addEventListener('click', (e) => {
+      const button = e.target.closest('.interaction-option');
+      if (!button) return;
+      const block = button.closest('.interaction-block');
+      const feedback = block.querySelector('.interaction-feedback');
+      const isCorrect = button.dataset.correct === 'true';
+      const message = button.dataset.feedback || '';
+      feedback.className = `interaction-feedback ${isCorrect ? 'good' : 'bad'}`;
+      feedback.innerHTML = `<strong>${isCorrect ? 'Good call.' : 'Not the safest choice.'}</strong> ${message}`;
+    });
+  </script>
 </body>
 </html>
