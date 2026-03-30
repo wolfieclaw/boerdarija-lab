@@ -3,17 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>BOERDARIJA | Our Courses</title>
+  <title>BOERDARIJA | Structured Study</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Oswald:wght@500;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="alternate icon" href="favicon.ico">
+  <style>
+    .courses-page { max-width: 1100px; margin: 0 auto; padding: 110px 20px 60px; }
+    .courses-header { text-align: center; margin-bottom: 36px; }
+    .courses-header h1 { font-family: 'Oswald', sans-serif; font-size: 3rem; color: #ff0066; margin-bottom: 16px; }
+    .courses-header p { max-width: 820px; margin: 0 auto 12px; line-height: 1.8; font-size: 1.05rem; }
+    .page-pill { display:inline-block; padding:10px 16px; border-radius:999px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12); color:#99ff99; font-weight:700; margin-top:8px; }
+    .section-card { background: rgba(0,0,0,0.25); border-radius: 18px; padding: 28px; margin-bottom: 26px; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 12px 34px rgba(0,0,0,0.16); }
+    .section-card h2 { font-family: 'Oswald', sans-serif; color: #ffcc99; margin-bottom: 16px; font-size: 1.9rem; }
+    .section-card p { line-height: 1.75; margin-bottom: 14px; }
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+    .bridge-card { background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03)); border-radius:18px; padding:24px; border:1px solid rgba(255,255,255,0.10); box-shadow:0 16px 40px rgba(0,0,0,0.18); }
+    .bridge-card h3 { font-family:'Oswald', sans-serif; color:#fff; font-size:1.45rem; margin-bottom:10px; }
+    .bridge-card p { color:#e8f4ff; line-height:1.75; margin-bottom:12px; }
+    .bridge-tag { display:inline-block; padding:6px 12px; border-radius:999px; background:rgba(255,0,102,0.14); color:#ffb3d1; font-size:0.8rem; font-weight:700; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:10px; }
+    .bridge-list { margin:0 0 16px 18px; line-height:1.8; color:#d7ecff; }
+    .muted-note { color:#cfdbe7; font-size:0.96rem; }
+    @media (max-width: 768px) {
+      .courses-page { padding: 98px 16px 48px; }
+      .courses-header h1 { font-size: 2.35rem; }
+      .section-card { padding: 22px; }
+      .section-card h2 { font-size: 1.55rem; }
+    }
+  </style>
 </head>
 <body>
-  <!-- Navigation Placeholder -->
   <div id="nav-placeholder"></div>
 
-  <!-- Breadcrumb Navigation -->
   <div class="breadcrumb">
     <div class="breadcrumb-container">
       <a href="index.html">Home</a>
@@ -22,80 +43,96 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <header>
-    <h1>Our Darija Courses</h1>
-    <p>Choose your level and start your journey to fluency in Moroccan Darija today!</p>
-  </header>
+  <main class="courses-page">
+    <section class="courses-header">
+      <h1>Structured Study, If You Want It</h1>
+      <p>
+        The heart of BoerDarija Lab is practical, scenario-first Casablanca Darija: taxis, cafés, markets, WhatsApp,
+        warmth, and sounding less stiff in real life. This page is for when you want more structure around that practical core.
+      </p>
+      <p>
+        So think of this less as “the real product” and more as: <strong>extra scaffolding for people who like levels and modules.</strong>
+      </p>
+      <div class="page-pill">Scenario-first product identity, structured study second</div>
+    </section>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="course-listing-grid">
-
-      <!-- A1 Beginner Course Card -->
-      <div class="course-level-card">
-        <div>
-          <h2 class="level-title">A1 Beginner Darija</h2>
-          <span class="level-tag">CEFR A1</span>
-          <p class="level-description">
-            Perfect for absolute beginners! Learn the essential sounds, greetings, basic grammar,
-            and vocabulary to handle simple everyday interactions in Moroccan Darija. 
-            Build a solid foundation for future learning.
-          </p>
+    <section class="section-card">
+      <h2>Start with practical paths first</h2>
+      <p>If your goal is to function better in Casablanca soon, these are still the best first clicks.</p>
+      <div class="cards-grid">
+        <div class="bridge-card">
+          <span class="bridge-tag">Get through short exchanges</span>
+          <h3>Taxi, Café, Market</h3>
+          <p>Build fast confidence for moving around, ordering, and asking prices without freezing.</p>
+          <a class="btn-action-primary" href="scenario-taxi-basics.html">Start with Taxi Basics</a>
         </div>
-        <a href="courses-a1.html" class="view-course-button">View A1 Modules</a>
-      </div>
-
-      <!-- A2 Elementary Course Card -->
-      <div class="course-level-card">
-        <div>
-          <h2 class="level-title">A2 Elementary Darija</h2>
-          <span class="level-tag">CEFR A2</span>
-          <p class="level-description">
-            Build upon your A1 knowledge. Learn to talk about past and future events,
-            expand your descriptive abilities, handle more complex quantities, and engage in
-            richer, more nuanced conversations.
-          </p>
+        <div class="bridge-card">
+          <span class="bridge-tag">Sound less translated</span>
+          <h3>WhatsApp, Natural vs Textbook vs Slang</h3>
+          <p>Learn the difference between correct-on-paper and normal-in-real-life Darija.</p>
+          <a class="btn-action-primary" href="natural-vs-textbook-vs-slang.html">Start with Naturalness</a>
         </div>
-        <a href="courses-a2.html" class="view-course-button">View A2 Modules</a>
-      </div>
-
-      <!-- B1 Intermediate Course Card -->
-      <div class="course-level-card">
-        <div>
-          <h2 class="level-title">B1 Intermediate Darija</h2>
-          <span class="level-tag">CEFR B1</span>
-          <p class="level-description">
-            Deepen your understanding of grammar, learn more complex sentence structures,
-            expand your vocabulary for a wider range of topics, and improve your fluency and
-            spontaneity in conversation.
-          </p>
+        <div class="bridge-card">
+          <span class="bridge-tag">Warmth & hospitality</span>
+          <h3>Family / Social, Tea & Food</h3>
+          <p>Build social comfort, greetings, hospitality rhythm, and less stiff presence around people.</p>
+          <a class="btn-action-primary" href="scenario-family-social.html">Start with Family / Social</a>
         </div>
-        <a href="courses-b1.html" class="view-course-button">View B1 Modules</a>
       </div>
-      
-      <!-- Placeholder for B2 Course Card -->
-      <div class="course-level-card coming-soon"> <!-- Added .coming-soon class -->
-        <div>
-          <h2 class="level-title">B2 Upper Intermediate Darija</h2>
-          <span class="level-tag">CEFR B2</span>
-          <p class="level-description">
-            (Coming Soon!) Achieve a high degree of fluency and spontaneity. Understand complex texts,
-            discuss abstract topics, and interact with native speakers with ease.
-          </p>
+    </section>
+
+    <section class="section-card">
+      <h2>Prefer a more structured route?</h2>
+      <p>If you like modules, levels, and a clearer sense of progression, use the course pages as scaffolding around the scenario-first product.</p>
+      <div class="cards-grid">
+        <div class="bridge-card">
+          <span class="bridge-tag">CEFR A1</span>
+          <h3>A1 Beginner Darija</h3>
+          <p>Best for absolute beginners who want a more guided foundation in core sounds, greetings, and simple everyday language.</p>
+          <a class="btn-action-primary" href="courses-a1.html">Open A1 Modules</a>
         </div>
-        <a href="#" class="view-course-button">Coming Soon</a>
+        <div class="bridge-card">
+          <span class="bridge-tag">CEFR A2</span>
+          <h3>A2 Elementary Darija</h3>
+          <p>Good if you want to build more range: past/future, descriptive language, and richer everyday conversation.</p>
+          <a class="btn-action-primary" href="courses-a2.html">Open A2 Modules</a>
+        </div>
+        <div class="bridge-card">
+          <span class="bridge-tag">CEFR B1</span>
+          <h3>B1 Intermediate Darija</h3>
+          <p>For going deeper into fluency, flexibility, and more complex sentence patterns once the practical basics feel steady.</p>
+          <a class="btn-action-primary" href="courses-b1.html">Open B1 Modules</a>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </div>
+    <section class="section-card">
+      <h2>How to use both without getting lost</h2>
+      <div class="cards-grid">
+        <div class="bridge-card">
+          <h3>Best starting rhythm</h3>
+          <ol class="bridge-list">
+            <li>Use a scenario page first</li>
+            <li>Use the course pages if you want more structure underneath it</li>
+            <li>Come back to real-life situations often</li>
+          </ol>
+        </div>
+        <div class="bridge-card">
+          <h3>Who this page is for</h3>
+          <p>People who like a clearer study route, but don’t want to lose the real-life practical focus that makes BoerDarija Lab interesting.</p>
+        </div>
+        <div class="bridge-card">
+          <h3>What to leave alone for now</h3>
+          <p class="muted-note">Don’t treat the level pages as the main identity of the project. The strongest thing here is still the practical scenario spine.</p>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
   <footer>
     <p>&copy; 2025 BOERDARIJA. All Rights Reserved.</p>
   </footer>
 
-  <!-- Add navigation script -->
   <script src="js/navigation.js"></script>
 </body>
 </html>
